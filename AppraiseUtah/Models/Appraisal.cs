@@ -49,7 +49,7 @@ namespace AppraiseUtah.Models
 
         #region Methods
 
-        public virtual IEnumerable<Appraisal> Get_Appraisal()
+        public virtual IEnumerable<Appraisal> Get_Appraisal(int id)
         {
             var results = _db.Database.SqlQuery<Appraisal>("EXEC GetAppraisal {0}", id);
             return null;
