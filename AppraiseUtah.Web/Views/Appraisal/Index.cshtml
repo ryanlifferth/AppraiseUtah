@@ -1,0 +1,123 @@
+﻿@using AppraiseUtah.ViewModels;
+@model AppraisalViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Appraisal"))
+{
+    Html.AntiForgeryToken();
+
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ClientPerson.FirstName)
+        @Html.TextBoxFor(m => m.Appraisal.ClientPerson.FirstName)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ClientPerson.LastName)
+        @Html.TextBoxFor(m => m.Appraisal.ClientPerson.LastName)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ClientPerson.CompanyName)
+        @Html.TextBoxFor(m => m.Appraisal.ClientPerson.CompanyName)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ClientPerson.Email)
+        @Html.TextBoxFor(m => m.Appraisal.ClientPerson.Email)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ClientPerson.Phone)
+        @Html.TextBoxFor(m => m.Appraisal.ClientPerson.Phone)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ClientAddress.Address1)
+        @Html.TextBoxFor(m => m.Appraisal.ClientAddress.Address1)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ClientAddress.Address2)
+        @Html.TextBoxFor(m => m.Appraisal.ClientAddress.Address2)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ClientAddress.City)
+        @Html.TextBoxFor(m => m.Appraisal.ClientAddress.City)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ClientAddress.StateCode)
+        @Html.TextBoxFor(m => m.Appraisal.ClientAddress.StateCode)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ClientAddress.PostalCode)
+        @Html.TextBoxFor(m => m.Appraisal.ClientAddress.PostalCode)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.OccupantPerson.FirstName)
+        @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.FirstName)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.OccupantPerson.LastName)
+        @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.LastName)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.OccupantPerson.Email)
+        @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.Email)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.OccupantPerson.Phone)
+        @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.Phone)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.PropertyAddress.Address1)
+        @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.Address1)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.PropertyAddress.Address2)
+        @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.Address2)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.PropertyAddress.City)
+        @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.City)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.PropertyAddress.StateCode)
+        @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.StateCode)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.PropertyAddress.PostalCode)
+        @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.PostalCode)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.AppraiserId)
+        @Html.TextBoxFor(m => m.Appraisal.AppraiserId)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.SalesContractPrice)
+        @Html.TextBoxFor(m => m.Appraisal.SalesContractPrice)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.PropertyTypeCode)
+        @Html.TextBoxFor(m => m.Appraisal.PropertyTypeCode)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.AppraisalTypeCode)
+        @Html.TextBoxFor(m => m.Appraisal.AppraisalTypeCode)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.ContactForAccess)
+        @Html.TextBoxFor(m => m.Appraisal.ContactForAccess)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.LegalDescription)
+        @Html.TextBoxFor(m => m.Appraisal.LegalDescription)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Appraisal.Comments)
+        @Html.TextBoxFor(m => m.Appraisal.Comments)
+    </div>
+    
+    <br />    
+    <input type="submit" value="Try" />
+    
+}
+

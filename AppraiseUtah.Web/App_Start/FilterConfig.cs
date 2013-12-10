@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace AppraiseUtah
+namespace AppraiseUtah.Web
 {
     public class FilterConfig
     {

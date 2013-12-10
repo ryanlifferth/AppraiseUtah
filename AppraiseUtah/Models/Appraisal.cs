@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using AppraiseUtah.Common.Constants;
+using AppraiseUtah.ViewModels;
 
 namespace AppraiseUtah.Models
 {
@@ -10,8 +11,7 @@ namespace AppraiseUtah.Models
     {
 
         #region Fields
-        
-        DbContext _db = new DbContext("DBConn");
+
         
         #endregion
 
@@ -19,7 +19,7 @@ namespace AppraiseUtah.Models
 
         public int Id { get; set; }
 
-        public string Status { get; set; }
+        public string StatusCode { get; set; }
 
         public int AppraiserId { get; set; }
 
@@ -31,7 +31,7 @@ namespace AppraiseUtah.Models
 
         public Address PropertyAddress { get; set; }
 
-        public decimal SalesContractPrice { get; set; }
+        public decimal? SalesContractPrice { get; set; }
 
         public string PropertyTypeCode { get; set; }
 
@@ -39,7 +39,7 @@ namespace AppraiseUtah.Models
 
         public string AppraisalPurposeCode { get; set; }
 
-        public bool ContactForAccess { get; set; }
+        public bool? ContactForAccess { get; set; }
 
         public string LegalDescription { get; set; }
 
@@ -49,14 +49,9 @@ namespace AppraiseUtah.Models
 
         #region Methods
 
-        public virtual IEnumerable<Appraisal> Get_Appraisal(int id)
-        {
-            var results = _db.Database.SqlQuery<Appraisal>("EXEC GetAppraisal {0}", id);
-            return null;
-        }
+        
 
         #endregion
-
 
     }
 
