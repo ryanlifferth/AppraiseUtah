@@ -28,6 +28,32 @@ namespace AppraiseUtah.ServiceModels
 
         #region Methods
 
+        /// <summary>
+        /// Gets a list of all active appraisers (appraisal companies) in the system
+        /// </summary>
+        /// <returns></returns>
+        public virtual List<Appraiser> Get_Appraisers()
+        {
+            var appraisers = _db.GetAppraisers();
+            return appraisers;
+        }
+
+        /// <summary>
+        /// Gets/finds an appraiser by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public virtual Appraiser Get_Appraiser(int id)
+        {
+            var appraiser = _db.GetAppraiserById(id);
+            return appraiser;
+        }
+
+        /// <summary>
+        /// Retrieves and appraisal by the ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public virtual Appraisal Get_Appraisal(int id)
         {
             //var results = _db.Database.SqlQuery<Appraisal>("EXEC GetAppraisal {0}", id);
@@ -35,6 +61,11 @@ namespace AppraiseUtah.ServiceModels
             return appraisal; ;
         }
 
+        /// <summary>
+        /// Creates an appraisal order through a call to the database (stored proc)
+        /// </summary>
+        /// <param name="appraisalViewModel"></param>
+        /// <returns></returns>
         public virtual int Save_Appraisal(AppraisalViewModel appraisalViewModel)
         {
             SqlParameter newAppraisalIdParam = new SqlParameter("newAppraisalOrderId", SqlDbType.Int);
@@ -105,6 +136,15 @@ namespace AppraiseUtah.ServiceModels
             return appraisalId;
         }
 
+        #region Private Methods
+
+        /// <summary>
+        /// Creates a SqlParameter
+        /// </summary>
+        /// <param name="paramName"></param>
+        /// <param name="sqlDbType"></param>
+        /// <param name="paramValue"></param>
+        /// <returns></returns>
         private SqlParameter CreateParameter(string paramName, SqlDbType sqlDbType, object paramValue)
         {
             SqlParameter param = new SqlParameter(paramName, sqlDbType);
@@ -112,6 +152,7 @@ namespace AppraiseUtah.ServiceModels
             
             return param;
         }
+        #endregion
 
         #endregion
 

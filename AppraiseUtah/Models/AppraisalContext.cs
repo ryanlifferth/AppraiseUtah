@@ -18,6 +18,8 @@ namespace AppraiseUtah.Models
 
         #region Properties
 
+        public DbSet<Appraiser> Appraisers { get; set; }
+
         public DbSet<Appraisal> Appraisals { get; set; }
         public DbSet<Person> Persons { get; set; }
 
@@ -34,6 +36,50 @@ namespace AppraiseUtah.Models
         #region Methods
 
         /// <summary>
+        /// Gets a list of all active appraisers
+        /// </summary>
+        /// <returns></returns>
+        public virtual List<Appraiser> GetAppraisers()
+        {
+            var appraisers = new List<Appraiser>();
+            
+            // Get the data from the database
+            DataTable dataTable = GetDataFromStoredProc("GetAppraisers");
+
+            // Popluate the appraiser list object
+            if (dataTable.Rows.Count > 0)
+            {
+                appraisers = PopulateAppraisersFromDataTable(dataTable);
+            }
+
+            return appraisers;
+        }
+
+        /// <summary>
+        /// Gets an individual Appraiser based on the appraiser's appraiserId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public virtual Appraiser GetAppraiserById(int id)
+        {
+            var appraiser = new Appraiser();
+
+            // Build the parameter for the database call
+            var parameters = new List<SqlParameter> { new SqlParameter { ParameterName = "@id", Value = id, SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input } };
+
+            // Get data from the database
+            DataTable dataTable = GetDataFromStoredProc("GetAppraiserById", parameters);
+
+            // Popluate the appraiser object
+            if (dataTable.Rows.Count > 0)
+            {
+                appraiser = PopulateAppraiserFromDataTable(dataTable);
+            }
+
+            return appraiser;
+        }
+
+        /// <summary>
         /// Gets the appraisal from the database stored proc using the appraisal id
         /// </summary>
         /// <param name="id"></param>
@@ -41,27 +87,12 @@ namespace AppraiseUtah.Models
         public virtual Appraisal GetAppraisal(int id)
         {
             var appraisal = new Appraisal();
-            DataTable dataTable = new DataTable();
 
-            // Create and populate the command object, including the input parameter 
-            var cmd = this.Database.Connection.CreateCommand();
-            cmd.CommandText = "GetAppraisal";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter { ParameterName = "@id", Value = id, SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input });
+            // Build the parameter for the database call
+            var parameters = new List<SqlParameter> {new SqlParameter { ParameterName = "@id", Value = id, SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input }};
 
-            try
-            {
-                // Open the connection and execute the reader
-                this.Database.Connection.Open();
-                var reader = cmd.ExecuteReader();
-
-                // Load the results into a datatable to be able to populate all complex data type objects on the appraisal object
-                dataTable.Load(reader);
-            }
-            catch (Exception ex)
-            {
-                // Do something
-            }
+            // Get data from the database
+            DataTable dataTable = GetDataFromStoredProc("GetAppraisal", parameters);
 
             // Popluate the appraisal object
             if (dataTable.Rows.Count > 0)
@@ -73,6 +104,49 @@ namespace AppraiseUtah.Models
         }
 
         #region Private Methods
+
+        /// <summary>
+        /// Populates the list of appraisers
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        private List<Appraiser> PopulateAppraisersFromDataTable(DataTable data) 
+        {
+            // Populate the appraiser object with the data from the Appraiser table
+            var reader = data.CreateDataReader();
+            var appraisers = ((IObjectContextAdapter)this).ObjectContext.Translate<Appraiser>(reader, "Appraisers", MergeOption.AppendOnly).ToList();
+            
+            // Hydrate the address object inside of the Appraiser object
+            if (appraisers.Count > 0)
+            {
+                foreach (var appraiser in appraisers)
+                {
+                    appraiser.Address = PopulateAddressFromDataTable(data, "");
+                }
+            }
+
+            return appraisers;
+        }
+
+        /// <summary>
+        /// Populates the Appraiser object
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        private Appraiser PopulateAppraiserFromDataTable(DataTable data)
+        {
+            // Populate the appraiser object with the data from the Appraiser table
+            var reader = data.CreateDataReader();
+            var appraiser = ((IObjectContextAdapter)this).ObjectContext.Translate<Appraiser>(reader, "Appraisers", MergeOption.AppendOnly).FirstOrDefault();
+
+            // Hydrate the address object inside of the Appraiser object
+            if (appraiser != null)
+            {
+                appraiser.Address = PopulateAddressFromDataTable(data, "");
+            }
+
+            return appraiser;
+        }
 
         /// <summary>
         /// Populates/hydrates the Appraisal data with data retrieved from the database
@@ -130,20 +204,69 @@ namespace AppraiseUtah.Models
         private static Address PopulateAddressFromDataTable(DataTable data, string columnPrefix)
         {
             Address address = null;
+            columnPrefix = columnPrefix != "" ? columnPrefix + "_" : columnPrefix;
 
             if (data.Rows.Count > 0)
             {
                 address = new Address();
-                address.AddressId = (int)data.Rows[0][columnPrefix + "_AddressId"];
-                address.AddressType = data.Rows[0][columnPrefix + "_AddressType"].ToString();
-                address.Address1 = data.Rows[0][columnPrefix + "_Address1"].ToString();
-                address.Address2 = data.Rows[0][columnPrefix + "_Address2"].ToString();
-                address.City = data.Rows[0][columnPrefix + "_City"].ToString();
-                address.StateCode = data.Rows[0][columnPrefix + "_StateCode"].ToString();
-                address.PostalCode = data.Rows[0][columnPrefix + "_PostalCode"].ToString();
+                address.AddressId = (int)data.Rows[0][columnPrefix + "AddressId"];
+                
+                address.AddressType = data.Rows[0].Table.Columns.Contains(columnPrefix + "AddressType") ? 
+                    data.Rows[0][columnPrefix + "AddressType"].ToString() : 
+                    null;
+                
+                address.Address1 = data.Rows[0][columnPrefix + "Address1"].ToString();
+                address.Address2 = data.Rows[0][columnPrefix + "Address2"].ToString();
+                address.City = data.Rows[0][columnPrefix + "City"].ToString();
+                address.StateCode = data.Rows[0][columnPrefix + "StateCode"].ToString();
+                address.PostalCode = data.Rows[0][columnPrefix + "PostalCode"].ToString();
             }
 
             return address;
+        }
+
+        /// <summary>
+        /// Retrieves data from database stored proc based on stored proc name and parameters (optional)
+        /// </summary>
+        /// <param name="storedProcName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        private DataTable GetDataFromStoredProc(string storedProcName, List<SqlParameter> parameters = null)
+        {
+            DataTable dataTable = new DataTable();
+
+            // Create and populate the command object 
+            var cmd = this.Database.Connection.CreateCommand();
+            cmd.CommandText = storedProcName;
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            if (parameters != null)
+            {
+                foreach (var parameter in parameters)
+                {
+                    cmd.Parameters.Add(parameter);
+                }
+            }
+
+            try
+            {
+                // Open the connection and execute the reader
+                this.Database.Connection.Open();
+                var reader = cmd.ExecuteReader();
+
+                // Load the results into a datatable to be able to populate all complex data type objects on the appraisal object
+                dataTable.Load(reader);
+            }
+            catch (Exception ex)
+            {
+                // Do something
+                
+            }
+            finally
+            {
+                this.Database.Connection.Close();
+            }
+
+            return dataTable;
         }
 
         #endregion

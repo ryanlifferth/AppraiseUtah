@@ -1,0 +1,20 @@
+﻿@model List<AppraiseUtah.Models.Appraiser>
+
+@Model.FirstOrDefault().Address;
+
+@{
+    foreach (var app in Model)
+    {
+        <div>
+            <div>
+                <label>Appraiser ID:</label>  @app.AppraiserId
+            </div>
+            <div>
+                <label>Name:</label>  @app.CompanyName
+            </div>
+            <div>
+                <label>Address:</label> @app.Address.Address1
+            </div>
+        </div>
+    }
+}

@@ -18,6 +18,7 @@ namespace AppraiseUtah.Web.Controllers
 
         #endregion
 
+
         //
         // GET: /Appraisal/
 
@@ -29,7 +30,12 @@ namespace AppraiseUtah.Web.Controllers
             if (id != 0)
             {
                 appraisalViewModel.Appraisal = _appraisalServiceModel.Get_Appraisal(id);
+                //var appraisers = _appraisalServiceModel.Get_Appraisers();
+                //var appraiser = _appraisalServiceModel.Get_Appraiser(3);
             }
+
+
+            //appraisalViewModel.Appraisal.ClientAddress.Address1
 
             return View(appraisalViewModel);
         }
@@ -50,7 +56,7 @@ namespace AppraiseUtah.Web.Controllers
             appraisalViewModel.Appraisal.ClientPerson = new Models.Person { FirstName = "Ryan", LastName = "Test", CompanyName = "Ryan Company", Email = "ryan@test.com", Phone = "8015556565" };
             appraisalViewModel.Appraisal.OccupantPerson = new Models.Person { FirstName = "Sam", LastName = "Occupant" };
             appraisalViewModel.Appraisal.PropertyAddress = new Models.Address { Address1 = "123 Somewhere", City = "SLC", PostalCode = "12345", StateCode = "UT" };
-            appraisalViewModel.Appraisal.AppraiserId = 1;
+            appraisalViewModel.Appraisal.AppraiserId = 3;
             appraisalViewModel.Appraisal.PropertyTypeCode = "SFR";
             appraisalViewModel.Appraisal.AppraisalTypeCode = "FULL";
             appraisalViewModel.Appraisal.AppraisalPurposeCode = "SC";

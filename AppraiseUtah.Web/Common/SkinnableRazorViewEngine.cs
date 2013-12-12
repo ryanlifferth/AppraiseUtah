@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AppraiseUtah.Common
+namespace AppraiseUtah.Web.Common
 {
     /// <summary>
     /// Allows partial views to be put in a PartialViews folder under the Views\Controller folder.
     /// </summary>
-    public class SkinnableRazorViewEngine : RazorViewEngine
+    public class MyRazorViewEngine : RazorViewEngine
     {
 
         private static string[] NewPartialViewFormats = new[] { 
@@ -17,7 +17,7 @@ namespace AppraiseUtah.Common
                 "~/Views/Shared/PartialViews/{0}.cshtml"
         };
 
-        public SkinnableRazorViewEngine()
+        public MyRazorViewEngine()
         {
             base.PartialViewLocationFormats = base.PartialViewLocationFormats.Union(NewPartialViewFormats).ToArray();
         }

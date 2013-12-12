@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using AppraiseUtah.Common;
+using AppraiseUtah.Web.Common;
 
 namespace AppraiseUtah.Web
 {
@@ -20,7 +20,7 @@ namespace AppraiseUtah.Web
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            ViewEngines.Engines.Add(new SkinnableRazorViewEngine());
+            ViewEngines.Engines.Add(new MyRazorViewEngine());
         }
     }
 }

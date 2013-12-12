@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using AppraiseUtah.Common.Constants;
 using AppraiseUtah.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace AppraiseUtah.Models
 {
@@ -35,6 +36,7 @@ namespace AppraiseUtah.Models
 
         public string PropertyTypeCode { get; set; }
 
+        [Required]
         public string AppraisalTypeCode { get; set; }
 
         public string AppraisalPurposeCode { get; set; }
