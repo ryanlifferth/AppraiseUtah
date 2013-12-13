@@ -1,0 +1,64 @@
+﻿
+<div class="registration-header">
+    <div class="container">
+        <div class="account-links pull-right">
+            <a href="#">Register</a>
+            <span class="seprator">|</span>
+            <a href="#">Log In</a>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*<a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span></a>*@
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                @BuildLink("Home", "Index", @"<span class=""glyphicon glyphicon-home""></span>")
+                @BuildLink("Appraisal", "Index", "Order")
+                <li><a href="#">Link</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+@helper BuildLink(string controller, string action, string text)
+{
+
+    var link = new System.UriBuilder(Request.Url.AbsoluteUri) { Path = Url.Action(action, controller) }.Uri;
+    var currentPage = Request.Url;
+    var active = "";
+
+    if (link.AbsoluteUri == currentPage.AbsoluteUri)
+    {
+        active = "active";
+    }
+    else if (currentPage.AbsolutePath == "/" && (controller.ToLower() == "home" && action.ToLower() == "index"))
+    {
+        // Home page
+        active = "active";
+    }
+        //<li><a href="#">Link</a></li>
+    <li class="@active">
+        <a href="@Url.Action(action, controller)">@Html.Raw(text)</a>
+    </li>
+
+}
+
+
+
+

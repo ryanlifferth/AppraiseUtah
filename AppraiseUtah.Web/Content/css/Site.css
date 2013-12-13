@@ -1,0 +1,118 @@
+﻿
+html,
+body {
+    background-color: #f8f8f8;
+    font-family: "Open Sans", Calibri, Candara, Arial, sans-serif;
+    font-size: 15px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#pageContainer {
+    min-height: 100%;
+    position: relative;
+}
+
+#body {
+    padding-bottom: 95px;
+}
+
+footer {
+   bottom: 0;
+   display: block;
+   height: 95px;   /* Height of the footer */
+   position: absolute;
+   width: 100%;
+}
+
+footer #footerContent {
+    height: 40px;
+}
+
+footer p {
+    font-size: 13px;
+    padding: 5px 0;
+}
+
+footer .footer-banner {
+    background-color: #2daacd;
+    color: #fff;
+    height: 45px;
+    font-family: "Lato";
+    font-size: 30px;
+}
+
+footer .footer-banner .container {
+    text-align: center;
+}
+
+
+a.btn-green {
+    background-color: #6abe59;
+    border-color: #6abe59;
+    border-radius: 3px;
+    color: #fff;
+    margin-bottom: 6px;
+    margin-left: 50px;
+    padding: 5px 30px;
+}
+
+a.btn-green:hover {
+    background-color: #7ac56b;
+    border-color: #7ac56b;
+    color: #fff;
+}
+
+
+
+
+
+.registration-header {
+    background-color: #323232;
+    color: #bdbdbd;
+    position: relative;
+}
+
+.registration-header .account-links {
+    padding: 5px 0;
+}
+
+.seprator {
+    padding: 0 6px;
+}
+
+.account-links a {
+    color: #bdbdbd;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.account-links a:hover {
+    color: #e1e1e1;
+}
+
+
+
+
+
+#HomeLink {
+    padding: 10px 10px;
+}
+
+#HomeLink .glyphicon {
+    font-size: 24px;
+}
+
+
+
+
+/*  Bootstrap Overrides  */
+.navbar-default {
+    border-bottom: 1px solid #027794;
+    /*border-bottom: 22px solid #323232;*/
+}
+
+.navbar {
+    margin-bottom: 0;
+}
