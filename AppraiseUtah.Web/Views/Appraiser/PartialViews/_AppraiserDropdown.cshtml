@@ -1,0 +1,18 @@
+﻿@model List<AppraiseUtah.Models.Appraiser>
+
+<div class="dropdown" id="appraiserList">
+    <a href="#" data-toggle="dropdown" class="dropdown-selected">Select One &nbsp;<span class="caret"></span></a>
+
+    <div class="dropdown-menu list-group" role="menu">
+        @{
+            foreach (var appraiser in Model)
+            {
+                <a href="#" class="list-group-item" role="presentation">
+                    @appraiser.CompanyName (@appraiser.AppraiserId)
+                </a>
+            }
+        }
+    </div>
+
+</div>
+

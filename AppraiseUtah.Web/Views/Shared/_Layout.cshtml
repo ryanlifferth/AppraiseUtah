@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppraiseUtah.com @(!String.IsNullOrEmpty(ViewBag.Title) ? " - " + ViewBag.Title : String.Empty)</title>
+    <title>@*AppraiseUtah.com*@ @(!String.IsNullOrEmpty(ViewBag.Title) ? " - " + ViewBag.Title : String.Empty)</title>
     @RenderSection("htmlhead", required: false)
     <link href="@Url.Content("~/Content/bootstrap/bootstrap.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/css/bootstrap-override.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/css/Site.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -31,7 +30,9 @@
         </footer>
     </div>
 
-    <script src="@Url.Content("~/Scripts/jquery-2.0.3.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Lib/jquery-2.0.3.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Lib/bootstrap.min.js")"></script>
+
+    @RenderSection("PageScripts", false)
 </body>
 </html>
