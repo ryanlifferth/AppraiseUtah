@@ -4,6 +4,7 @@ using System.Data.Entity;
 using AppraiseUtah.Common.Constants;
 using AppraiseUtah.ViewModels;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace AppraiseUtah.Models
 {
@@ -22,6 +23,9 @@ namespace AppraiseUtah.Models
 
         public string StatusCode { get; set; }
 
+        [DisplayName("Appraiser")]
+        [Required(ErrorMessage = "Please select an appraiser.")]
+        //[StringLength(160)]
         public int AppraiserId { get; set; }
 
         public Person ClientPerson { get; set; }

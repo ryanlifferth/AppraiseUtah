@@ -12,6 +12,12 @@
     Html.AntiForgeryToken();
 
     <div>
+        @Html.LabelFor(m => m.Appraisal.AppraiserId)
+        @{ Html.RenderAction("_AppraiserDropdown", "Appraiser"); }
+        @Html.HiddenFor(m => m.Appraisal.AppraiserId, new { data_item = "AppraiserId" })
+        @Html.ValidationMessageFor(m => m.Appraisal.AppraiserId)
+    </div>
+    <div>
         @Html.LabelFor(m => m.Appraisal.ClientPerson.FirstName)
         @Html.TextBoxFor(m => m.Appraisal.ClientPerson.FirstName)
     </div>
@@ -88,10 +94,6 @@
         @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.PostalCode)
     </div>
     <div>
-        @Html.LabelFor(m => m.Appraisal.AppraiserId)
-        @Html.TextBoxFor(m => m.Appraisal.AppraiserId)
-    </div>
-    <div>
         @Html.LabelFor(m => m.Appraisal.SalesContractPrice)
         @Html.TextBoxFor(m => m.Appraisal.SalesContractPrice)
     </div>
@@ -121,3 +123,9 @@
     
 }
 
+
+@section PageScripts {
+
+    <script src="@Url.Content("~/Scripts/Common/Appraisers.js")"></script>
+
+}

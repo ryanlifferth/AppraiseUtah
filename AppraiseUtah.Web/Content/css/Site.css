@@ -116,3 +116,82 @@ a.btn-green:hover {
 .navbar {
     margin-bottom: 0;
 }
+
+
+
+
+
+
+/* Appraiser Dropdown PartialView */
+#appraiserList a.dropdown-selected {
+    background-color: #fff;
+    border: 1px solid #abadb3;
+    color: #333;
+    display: inline-block;
+    font-size: 15px;
+    padding: 2px 3px;
+    position: relative;
+    text-decoration: none;
+    width: 400px;
+}
+
+#appraiserList a.dropdown-selected .caret {
+    position: absolute;
+    right: 5px;
+    top: 11px;
+}
+
+#appraiserList .dropdown-menu {
+    margin-top: -1px;
+    padding: 0;
+    width: 600px;
+}
+
+#appraiserList .list-group-item {
+    border-left: none;
+    border-right: none;
+}
+#appraiserList .list-group-item.first-item {
+    border-top: none;
+}
+#appraiserList .list-group-item.last-item {
+    border-bottom: none;
+}
+
+#appraiserList .list-group-item-heading {
+    margin-bottom: 0;
+}
+
+#appraiserList .list-group-item-text { 
+    clear: both;
+    font-size: 13px;
+    line-height: normal;
+    overflow: auto;
+}
+
+#appraiserList .list-group-item-text.serving { 
+    color: #898989;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+#appraiserList a.list-group-item.active .list-group-item-text.serving {
+    color: #d1dfea;
+}
+
+#appraiserList .list-group-item-text address { 
+    margin-bottom: 0;
+    width: 250px;
+}
+
+.contact abbr {
+    margin-right: 6px;
+}
+
+.contact .email {
+    color: #027794;
+}
+
+#appraiserList a.list-group-item.active .list-group-item-text .contact .email {
+    color: #73b8c9;
+}

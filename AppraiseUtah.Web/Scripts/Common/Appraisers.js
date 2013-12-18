@@ -4,9 +4,16 @@
         
         // TODO:  Use knockoutJS
         $("#appraiserList > .dropdown-menu > a").on('click', function () {
-            var content = $(this).html() + '&nbsp;<span class="caret"></span>';
+            var appraiserName = $(this).children(".appraiser-name").html();
+            var appraiserId = $(this).children(".appraiser-id").html();
 
-            $(this).parents("#appraiserList").children(".dropdown-selected").html(content);
+            $("#appraiserList").children(".dropdown-menu").children("a").removeClass("active");
+            $(this).parents("#appraiserList").children(".dropdown-selected").children(".selected-appraiser").html(appraiserName);
+            $(this).addClass("active");
+            $(this).parents("#appraiserList").children("input[name='appraiserId']").val(appraiserId);
+            $("input[data-item='AppraiserId']").val(appraiserId);
+
+            //return false;
         });
 
 

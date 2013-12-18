@@ -1,18 +1,75 @@
 ﻿@model List<AppraiseUtah.Models.Appraiser>
 
 <div class="dropdown" id="appraiserList">
-    <a href="#" data-toggle="dropdown" class="dropdown-selected">Select One &nbsp;<span class="caret"></span></a>
+    <a href="#" data-toggle="dropdown" class="dropdown-selected">
+        <span class="selected-appraiser">Select One</span>
+        <span class="caret"></span>
+    </a>
 
     <div class="dropdown-menu list-group" role="menu">
+        <a href="#" class="list-group-item first-item active" role="presentation">
+            <span class="appraiser-name">Select One</span>
+            <span class="hidden appraiser-id"></span>
+        </a>
         @{
             foreach (var appraiser in Model)
             {
-                <a href="#" class="list-group-item" role="presentation">
-                    @appraiser.CompanyName (@appraiser.AppraiserId)
+                var professionalDesignations = (!string.IsNullOrEmpty(appraiser.ProfessionalDesignations)) ? " " + appraiser.ProfessionalDesignations : "";
+                //var firstItem = (appraiser == Model.First()) ? " first-item" : "";
+                var lastItem = (appraiser == Model.Last()) ? " last-item" : "";
+                
+                <a href="#" class="list-group-item@(lastItem)" role="presentation">
+                    <h4 class="list-group-item-heading appraiser-name">@appraiser.CompanyName<span class="designation">@professionalDesignations</span></h4>
+                    <div class="list-group-item-text serving">Serving @appraiser.AreasServed</div>
+                    <div class="list-group-item-text">
+                        <address class="pull-left">
+                            @appraiser.Address.Address1 <br />
+                            @if (!string.IsNullOrEmpty(appraiser.Address.Address2)) 
+                            { 
+                                @appraiser.Address.Address2 <br /> 
+                            }
+                            @appraiser.Address.City, @appraiser.Address.PostalCode  @appraiser.Address.StateCode
+                        </address>
+                        <div class="contact pull-left">
+                            @Html.Raw(buildContactItems(appraiser))
+                        </div>
+                    </div>
+                    <span class="hidden appraiser-id">@appraiser.AppraiserId</span>
                 </a>
             }
         }
     </div>
 
+    @Html.Hidden("appraiserId", "")
 </div>
 
+
+
+@functions {
+    private string buildContactItems(AppraiseUtah.Models.Appraiser appraiser)
+    {
+        var contact = "";
+
+        contact = (!string.IsNullOrEmpty(appraiser.Phone)) ? @"<abbr title=""Phone"">P:</abbr>" + appraiser.Phone : "";
+
+        if (contact != "")
+        {
+            contact += (!string.IsNullOrEmpty(appraiser.Fax)) ? @"<br /><abbr title=""Fax"">F:</abbr>" + appraiser.Fax : ""; 
+        }
+        else
+        {
+            contact += (!string.IsNullOrEmpty(appraiser.Fax)) ? @"<abbr title=""Fax"">F:</abbr>" + appraiser.Fax : ""; 
+        }
+        
+        if (contact != "")
+        {
+            contact += (!string.IsNullOrEmpty(appraiser.Email)) ? @"<br /><span class=""email"">" + appraiser.Email + "</span>" : ""; 
+        }
+        else
+        {
+            contact += (!string.IsNullOrEmpty(appraiser.Email)) ? @"<span class=""email"">" + appraiser.Email + "</span>" : ""; 
+        }
+        
+        return contact;
+    }
+}
