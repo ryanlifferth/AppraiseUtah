@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -13,14 +14,19 @@ namespace AppraiseUtah.Models
 
         public string PersonType { get; set; }
 
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
 
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
 
+        [DisplayName("Company Name")]
         public string CompanyName { get; set; }
 
+        [DisplayName("Email")]
         public string Email { get; set; }
 
+        [DisplayName("Phone Number")]
         public string Phone { get; set; }
 
         #endregion

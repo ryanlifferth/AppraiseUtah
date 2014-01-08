@@ -1,0 +1,52 @@
+﻿
+#OrderAppraisal label {
+    color: #707070;
+    font-weight: normal;
+    padding-right: 15px;
+    text-align: right;
+    width: 180px;
+}
+
+#OrderAppraisal .form-group {
+    margin-bottom: 5px;
+}
+
+#OrderAppraisal .form-group .group-label {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    padding-top: 3px;
+    vertical-align: top;
+    width: 180px;
+}
+
+#OrderAppraisal .form-group .group-input {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+#OrderAppraisal .input-group {
+    display: inline-table;
+    max-width: 500px;
+}
+
+#OrderAppraisal .input-group-addon {
+    border-color: #abadb3;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+    padding: 0 8px;
+}
+
+#OrderAppraisal textarea {
+    font-size: 12px;
+    width: 600px;
+}
+
+#OrderAppraisal .bottom-well {
+    margin-bottom: 5px;
+}
+
+#OrderAppraisal .submit-buttons {
+    margin-bottom: 15px;
+}

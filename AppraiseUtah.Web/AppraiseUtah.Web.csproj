@@ -133,6 +133,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\css\OrderAppraisal.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -141,11 +142,14 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\Lib\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\Common\Appraisers.js" />
+    <Content Include="Scripts\Common\OrderAppraisal.js" />
     <Content Include="Scripts\Lib\bootstrap.js" />
     <Content Include="Scripts\Lib\bootstrap.min.js" />
     <Content Include="Scripts\Lib\jquery-2.0.3.js" />
     <Content Include="Scripts\Lib\jquery-2.0.3.min.js" />
     <None Include="Scripts\Lib\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Lib\jquery.maskedinput.js" />
+    <Content Include="Scripts\Lib\jquery.maskedinput.min.js" />
     <Content Include="Scripts\Lib\jquery.validate.js" />
     <Content Include="Scripts\Lib\jquery.validate.min.js" />
     <Content Include="Scripts\Lib\jquery.validate.unobtrusive.js" />

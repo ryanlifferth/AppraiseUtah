@@ -33,10 +33,7 @@ namespace AppraiseUtah.Web.Controllers
                 //var appraisers = _appraisalServiceModel.Get_Appraisers();
                 //var appraiser = _appraisalServiceModel.Get_Appraiser(3);
             }
-
-
-            //appraisalViewModel.Appraisal.ClientAddress.Address1
-
+            
             return View(appraisalViewModel);
         }
 

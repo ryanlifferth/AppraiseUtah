@@ -20,6 +20,7 @@ namespace AppraiseUtah.ViewModels
 
         #region Methods
 
+        
 
         #endregion
 

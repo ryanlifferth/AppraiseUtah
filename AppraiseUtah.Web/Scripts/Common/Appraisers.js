@@ -10,13 +10,10 @@
             $("#appraiserList").children(".dropdown-menu").children("a").removeClass("active");
             $(this).parents("#appraiserList").children(".dropdown-selected").children(".selected-appraiser").html(appraiserName);
             $(this).addClass("active");
-            $(this).parents("#appraiserList").children("input[name='appraiserId']").val(appraiserId);
-            $("input[data-item='AppraiserId']").val(appraiserId);
+            $(this).parents("#appraiserList").children("input[name='appraiserId']").val(appraiserId).trigger('change');
+            $("input[data-item='AppraiserId']").val(appraiserId).trigger('change');
 
             //return false;
         });
-
-
-
 
 });

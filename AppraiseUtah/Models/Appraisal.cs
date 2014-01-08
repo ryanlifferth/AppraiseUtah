@@ -40,7 +40,8 @@ namespace AppraiseUtah.Models
 
         public string PropertyTypeCode { get; set; }
 
-        [Required]
+        [DisplayName("Appraisal Type")]
+        [Required(ErrorMessage = "Please select an Appraisal Type")]
         public string AppraisalTypeCode { get; set; }
 
         public string AppraisalPurposeCode { get; set; }
