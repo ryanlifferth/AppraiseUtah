@@ -1,8 +1,10 @@
 ﻿@using AppraiseUtah.ViewModels;
+@using AppraiseUtah.Utilities;
 @model AppraisalViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    //var stateList = ViewData["StateList"];
 }
 
 @using (Html.BeginForm("Index", "Appraisal", FormMethod.Post, new { id = "OrderAppraisal" }))
@@ -16,8 +18,8 @@
         </div>
         <div class="group-input">
             @{ Html.RenderAction("_AppraiserDropdown", "Appraiser"); }
-            @Html.HiddenFor(m => m.Appraisal.AppraiserId, new { data_item = "AppraiserId", @class = "validate" })
             @Html.ValidationMessageFor(m => m.Appraisal.AppraiserId)
+            @Html.HiddenFor(m => m.Appraisal.AppraiserId, new { data_item = "AppraiserId", @class = "validate" })
         </div>
     </div>
 
@@ -25,39 +27,39 @@
     <div class="well well-sm">
         <div class="form-group">
             @Html.LabelFor(m => m.Appraisal.ClientPerson.CompanyName, new { @class = "" })
-            @Html.TextBoxFor(m => m.Appraisal.ClientPerson.CompanyName, new { @class = "" })
+            @Html.TextBoxFor(m => m.Appraisal.ClientPerson.CompanyName, new { @class = "input-wide" })
         </div>
         <div class="form-group">
             @Html.Label("Name")
-            @Html.TextBoxFor(m => m.Appraisal.ClientPerson.FirstName, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientPerson.FirstName) })
-            @Html.TextBoxFor(m => m.Appraisal.ClientPerson.LastName, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientPerson.LastName) })
+            @Html.TextBoxFor(m => m.Appraisal.ClientPerson.FirstName, new { @class = "input-def", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientPerson.FirstName) })
+            @Html.TextBoxFor(m => m.Appraisal.ClientPerson.LastName, new { @class = "input-med", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientPerson.LastName) })
             @Html.ValidationMessageFor(m => m.Appraisal.ClientPerson.FirstName)
             @Html.ValidationMessageFor(m => m.Appraisal.ClientPerson.LastName)
         </div>
         <div class="form-group">
             @Html.Label("Contact Info")
-            @Html.TextBoxFor(m => m.Appraisal.ClientPerson.Phone, new { @class = "phone-number", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientPerson.Phone) })
-            @Html.TextBoxFor(m => m.Appraisal.ClientPerson.Email, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientPerson.Email) })
+            @Html.TextBoxFor(m => m.Appraisal.ClientPerson.Phone, new { @class = "input-def phone-number", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientPerson.Phone) })
+            @Html.TextBoxFor(m => m.Appraisal.ClientPerson.Email, new { @class = "input-med", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientPerson.Email) })
             @Html.ValidationMessageFor(m => m.Appraisal.ClientPerson.Phone)
             @Html.ValidationMessageFor(m => m.Appraisal.ClientPerson.Email)
         </div>
-        <div class="form-group">
+        <div class="form-group last-form-group">
             <div class="group-label">
                 @Html.Label("Address")
             </div>
             <div class="group-input">
                 <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.ClientAddress.Address1, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientAddress.Address1) })
+                    @Html.TextBoxFor(m => m.Appraisal.ClientAddress.Address1, new { @class = "input-wide", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientAddress.Address1) })
                 </div>
                 <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.ClientAddress.Address2, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientAddress.Address2) })
+                    @Html.TextBoxFor(m => m.Appraisal.ClientAddress.Address2, new { @class = "input-wide", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientAddress.Address2) })
                 </div>
                 <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.ClientAddress.City, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientAddress.City) })
-                    @Html.TextBoxFor(m => m.Appraisal.ClientAddress.StateCode, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientAddress.StateCode) })
+                    @Html.TextBoxFor(m => m.Appraisal.ClientAddress.City, new { @class = "input-med", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientAddress.City) })
+                    @Html.DropDownListFor(m => m.Appraisal.ClientAddress.StateCode, DropDownData.GetStates("UT"), new { @class = "input-def" })
                 </div>
-                <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.ClientAddress.PostalCode, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientAddress.PostalCode) })
+                <div class="form-group last-form-group">
+                    @Html.TextBoxFor(m => m.Appraisal.ClientAddress.PostalCode, new { @class = "input-def", placeholder = Html.DisplayNameFor(m => m.Appraisal.ClientAddress.PostalCode) })
                 </div>
             </div>
         </div>
@@ -71,18 +73,19 @@
             </div>
             <div class="group-input">
                 <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.FirstName, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.OccupantPerson.FirstName) })
-                    @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.LastName, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.OccupantPerson.LastName) })
+                    @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.FirstName, new { @class = "input-def", placeholder = Html.DisplayNameFor(m => m.Appraisal.OccupantPerson.FirstName) })
+                    @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.LastName, new { @class = "input-med", placeholder = Html.DisplayNameFor(m => m.Appraisal.OccupantPerson.LastName) })
                 </div>
-                <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.Phone, new { @class = "phone-number", placeholder = Html.DisplayNameFor(m => m.Appraisal.OccupantPerson.Phone) })
-                    @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.Email, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.OccupantPerson.Email) })
+                <div>
+                    @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.Phone, new { @class = "phone-number input-def", placeholder = Html.DisplayNameFor(m => m.Appraisal.OccupantPerson.Phone) })
+                    @Html.TextBoxFor(m => m.Appraisal.OccupantPerson.Email, new { @class = "input-med", placeholder = Html.DisplayNameFor(m => m.Appraisal.OccupantPerson.Email) })
                 </div>
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Appraisal.PropertyTypeCode)
-            @Html.TextBoxFor(m => m.Appraisal.PropertyTypeCode, new { @class = "" })
+            @Html.DropDownListFor(m => m.Appraisal.PropertyTypeCode, DropDownData.GetPropertyTypes(), "-- select --", new { @class = "input-med blank-first-child select-placeholder" })
+            @Html.ValidationMessageFor(m => m.Appraisal.PropertyTypeCode)
         </div>
         <div class="form-group">
             <div class="group-label">
@@ -90,37 +93,43 @@
             </div>
             <div class="group-input">
                 <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.Address1, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.PropertyAddress.Address1) })
+                    @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.Address1, new { @class = "input-wide", placeholder = Html.DisplayNameFor(m => m.Appraisal.PropertyAddress.Address1) })
+                    @Html.ValidationMessageFor(m => m.Appraisal.PropertyAddress.Address1)
                 </div>
                 <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.Address2, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.PropertyAddress.Address2) })
+                    @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.Address2, new { @class = "input-wide", placeholder = Html.DisplayNameFor(m => m.Appraisal.PropertyAddress.Address2) })
                 </div>
                 <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.City, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.PropertyAddress.City) })
-                    @Html.HiddenFor(m => m.Appraisal.PropertyAddress.StateCode, new { value = "UT" } )
+                    @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.City, new { @class = "input-med", placeholder = Html.DisplayNameFor(m => m.Appraisal.PropertyAddress.City) })
+                    @Html.HiddenFor(m => m.Appraisal.PropertyAddress.StateCode, new { @Value = "UT" } )
                     <span class="default-input-value">Utah</span>
+                    @Html.ValidationMessageFor(m => m.Appraisal.PropertyAddress.City)
                 </div>
                 <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.PostalCode, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.PropertyAddress.PostalCode) })
+                    @Html.TextBoxFor(m => m.Appraisal.PropertyAddress.PostalCode, new { @class = "input-def", placeholder = Html.DisplayNameFor(m => m.Appraisal.PropertyAddress.PostalCode) })
                 </div>
                 <div class="form-group">
-                    @Html.TextBoxFor(m => m.Appraisal.ContactForAccess, new { @class = "", placeholder = Html.DisplayNameFor(m => m.Appraisal.ContactForAccess) })
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(m => m.Appraisal.ContactForAccess)
+                            @Html.LabelFor(m => m.Appraisal.ContactForAccess)
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Appraisal.AppraisalTypeCode)
-            @Html.TextBoxFor(m => m.Appraisal.AppraisalTypeCode, new { @class = "" })
-            @Html.ValidationMessageFor(m => m.Appraisal.AppraisalTypeCode)
+            @Html.LabelFor(m => m.Appraisal.AppraisalPurposeCode)
+            @Html.DropDownListFor(m => m.Appraisal.AppraisalPurposeCode, DropDownData.GetAppraisalPurposes(), "-- select --", new { @class = "input-med blank-first-child select-placeholder" })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Appraisal.SalesContractPrice)
             <div class="input-group">
                 <span class="input-group-addon">$</span>
-                @Html.TextBoxFor(m => m.Appraisal.SalesContractPrice, new { @class = "" })
+                @Html.TextBoxFor(m => m.Appraisal.SalesContractPrice, new { @class = "input-def" })
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group last-form-group">
             @Html.LabelFor(m => m.Appraisal.LegalDescription)
             @Html.TextAreaFor(m => m.Appraisal.LegalDescription, new { rows = "2" })
         </div>
@@ -134,7 +143,7 @@
 
     <div class="form-group pull-right submit-buttons">
         <input type="submit" value="Order Appraisal" class="btn btn-primary btn-lg" />
-        <input type="reset" value="Cancel" class="btn btn-default btn-lg" />
+        <input type="reset" id="CancelForm" value="Cancel" class="btn btn-default btn-lg" />
     </div>
 
 }

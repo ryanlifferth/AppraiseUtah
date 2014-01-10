@@ -121,6 +121,10 @@ input, input[type="password"], input[type="search"], isindex {
     border: 1px solid #abadb3;
 }
 
+input, button, select, textarea {
+    padding-left: 2px;
+}
+
 
 /* Validation style */
 .input-validation-error {

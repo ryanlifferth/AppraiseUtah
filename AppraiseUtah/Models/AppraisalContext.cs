@@ -21,7 +21,14 @@ namespace AppraiseUtah.Models
         public DbSet<Appraiser> Appraisers { get; set; }
 
         public DbSet<Appraisal> Appraisals { get; set; }
+        
         public DbSet<Person> Persons { get; set; }
+
+        public DbSet<State> States { get; set; }
+
+        public DbSet<PropertyType> PropertyTypes { get; set; }
+
+        public DbSet<AppraisalPurpose> AppraisalPurposes { get; set; }
 
         #endregion
 
@@ -34,6 +41,8 @@ namespace AppraiseUtah.Models
         #endregion
 
         #region Methods
+
+        #region Appraiser Methods
 
         /// <summary>
         /// Gets a list of all active appraisers
@@ -79,6 +88,10 @@ namespace AppraiseUtah.Models
             return appraiser;
         }
 
+        #endregion
+
+        #region Appraisal Methods
+
         /// <summary>
         /// Gets the appraisal from the database stored proc using the appraisal id
         /// </summary>
@@ -103,7 +116,110 @@ namespace AppraiseUtah.Models
             return appraisal;
         }
 
+        #endregion
+
+        #region State Methods
+
+        public virtual List<State> GetStates()
+        {
+            var states = new List<State>();
+
+            // Get the data from the database
+            DataTable dataTable = GetDataFromStoredProc("GetStates");
+
+            if (dataTable.Rows.Count > 0)
+            {
+                states = PopulateStatesFromDataTable(dataTable);
+            }
+
+            return states;
+        }
+
+        #endregion
+
+        #region Property Type Methods
+
+        public virtual List<PropertyType> GetPropertyTypes()
+        {
+            var propertyTypes = new List<PropertyType>();
+
+            // Get the data from the database
+            DataTable dataTable = GetDataFromStoredProc("GetPropertyTypes");
+
+            if (dataTable.Rows.Count > 0)
+            {
+                propertyTypes = PopulatePropertyTypesFromDataTable(dataTable);
+            }
+
+            return propertyTypes;
+        }
+
+        #endregion
+
+        #region Appraisal Purpose Methods
+
+        public virtual List<AppraisalPurpose> GetAppraisalPurposes()
+        {
+            var appraisalPurposes = new List<AppraisalPurpose>();
+
+            // Get the data from the database
+            DataTable dataTable = GetDataFromStoredProc("GetAppraisalPurposes");
+
+            if (dataTable.Rows.Count > 0)
+            {
+                appraisalPurposes = PopulateAppraisalPurposesFromDataTable(dataTable);
+            }
+
+            return appraisalPurposes;
+        }
+
+        #endregion
+
         #region Private Methods
+
+        /// <summary>
+        /// Retrieves data from database stored proc based on stored proc name and parameters (optional)
+        /// </summary>
+        /// <param name="storedProcName"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        private DataTable GetDataFromStoredProc(string storedProcName, List<SqlParameter> parameters = null)
+        {
+            DataTable dataTable = new DataTable();
+
+            // Create and populate the command object 
+            var cmd = this.Database.Connection.CreateCommand();
+            cmd.CommandText = storedProcName;
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            if (parameters != null)
+            {
+                foreach (var parameter in parameters)
+                {
+                    cmd.Parameters.Add(parameter);
+                }
+            }
+
+            try
+            {
+                // Open the connection and execute the reader
+                this.Database.Connection.Open();
+                var reader = cmd.ExecuteReader();
+
+                // Load the results into a datatable to be able to populate all complex data type objects on the appraisal object
+                dataTable.Load(reader);
+            }
+            catch (Exception ex)
+            {
+                // Do something
+
+            }
+            finally
+            {
+                this.Database.Connection.Close();
+            }
+
+            return dataTable;
+        }
 
         /// <summary>
         /// Populates the list of appraisers
@@ -226,47 +342,45 @@ namespace AppraiseUtah.Models
         }
 
         /// <summary>
-        /// Retrieves data from database stored proc based on stored proc name and parameters (optional)
+        /// Populate a list of states
         /// </summary>
-        /// <param name="storedProcName"></param>
-        /// <param name="parameters"></param>
+        /// <param name="table"></param>
         /// <returns></returns>
-        private DataTable GetDataFromStoredProc(string storedProcName, List<SqlParameter> parameters = null)
+        private List<State> PopulateStatesFromDataTable(DataTable data)
         {
-            DataTable dataTable = new DataTable();
+            // Populate the state object with the data from the StateList table
+            var reader = data.CreateDataReader();
+            var states = ((IObjectContextAdapter)this).ObjectContext.Translate<State>(reader, "States", MergeOption.AppendOnly).ToList();
 
-            // Create and populate the command object 
-            var cmd = this.Database.Connection.CreateCommand();
-            cmd.CommandText = storedProcName;
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            if (parameters != null)
-            {
-                foreach (var parameter in parameters)
-                {
-                    cmd.Parameters.Add(parameter);
-                }
-            }
+            return states;
+        }
 
-            try
-            {
-                // Open the connection and execute the reader
-                this.Database.Connection.Open();
-                var reader = cmd.ExecuteReader();
+        /// <summary>
+        /// Populate a list of states
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        private List<PropertyType> PopulatePropertyTypesFromDataTable(DataTable data)
+        {
+            // Populate the propertyType object with the data from the PropertyType table
+            var reader = data.CreateDataReader();
+            var propertyTypes = ((IObjectContextAdapter)this).ObjectContext.Translate<PropertyType>(reader, "PropertyTypes", MergeOption.AppendOnly).ToList();
 
-                // Load the results into a datatable to be able to populate all complex data type objects on the appraisal object
-                dataTable.Load(reader);
-            }
-            catch (Exception ex)
-            {
-                // Do something
-                
-            }
-            finally
-            {
-                this.Database.Connection.Close();
-            }
+            return propertyTypes;
+        }
 
-            return dataTable;
+        /// <summary>
+        /// Populate a list of Appraisal Purposes
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        private List<AppraisalPurpose> PopulateAppraisalPurposesFromDataTable(DataTable data)
+        {
+            // Populate the appraisalPurposes object with the data from the AppraisalPurpose table
+            var reader = data.CreateDataReader();
+            var appraisalPurposes = ((IObjectContextAdapter)this).ObjectContext.Translate<AppraisalPurpose>(reader, "AppraisalPurposes", MergeOption.AppendOnly).ToList();
+
+            return appraisalPurposes;
         }
 
         #endregion

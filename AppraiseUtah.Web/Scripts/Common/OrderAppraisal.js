@@ -35,5 +35,21 @@ $(document).ready(
         // Add phone mask
         $(".phone-number").mask("(999) 999-9999");
 
+        
+        $("#CancelForm").on("click", function (e) {
+            $("span.field-validation-error").html("");
+            $("span.field-validation-valid").html("");
+            $(".blank-first-child").trigger("change");   // triggers change to update display color
+        });
+
+        // Formatting/display to show "placeholder" coloring for DropDownBoxes with an empty first option
+        $(".blank-first-child").on("change", function () {
+            if ($("option:selected", this).index() === 0) {
+                $(this).addClass("select-placeholder");
+            }
+            else {
+                $(this).removeClass("select-placeholder");
+            }            
+        });
 
 });

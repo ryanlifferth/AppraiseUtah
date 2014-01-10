@@ -1,7 +1,13 @@
 ﻿
+#OrderAppraisal h4 {
+    font-size: 16px;
+    margin-bottom: 1px;
+}
+
 #OrderAppraisal label {
     color: #707070;
     font-weight: normal;
+    margin-bottom: 2px;
     padding-right: 15px;
     text-align: right;
     width: 180px;
@@ -9,6 +15,10 @@
 
 #OrderAppraisal .form-group {
     margin-bottom: 5px;
+}
+
+#OrderAppraisal .form-group.last-form-group {
+    margin-bottom: 0;
 }
 
 #OrderAppraisal .form-group .group-label {
@@ -36,6 +46,46 @@
     border-bottom-left-radius: 2px;
     border-top-left-radius: 2px;
     padding: 0 8px;
+}
+
+#OrderAppraisal .dropdown {
+    display: inline;
+    padding-right: 0;
+}
+
+
+#OrderAppraisal .input-def {
+    width: 150px;
+}
+
+#OrderAppraisal .input-med {
+    width: 250px;
+}
+
+#OrderAppraisal .input-wide {
+    width: 404px;
+}
+
+#OrderAppraisal .checkbox {
+    margin-top: 0;
+}
+
+select.blank-first-child option {
+    color: #333;
+}
+
+select.blank-first-child option:first-child, select.select-placeholder {
+    color: #a9a9a9;
+}
+
+#OrderAppraisal .default-input-value {
+    border: 1px solid #abadb3;
+    color: #7d7d7d;
+    display: inline-block;
+    font-weight: bold;
+    font-style: italic;
+    padding: 1px 2px;
+    width: 150px;
 }
 
 #OrderAppraisal textarea {

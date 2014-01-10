@@ -38,15 +38,18 @@ namespace AppraiseUtah.Models
 
         public decimal? SalesContractPrice { get; set; }
 
+        [DisplayName("Property Type")]
+        [Required(ErrorMessage = "Please select a Property Type")]
         public string PropertyTypeCode { get; set; }
 
         [DisplayName("Appraisal Type")]
-        [Required(ErrorMessage = "Please select an Appraisal Type")]
         public string AppraisalTypeCode { get; set; }
 
+        [DisplayName("Appraisal Purpose")]
         public string AppraisalPurposeCode { get; set; }
 
-        public bool? ContactForAccess { get; set; }
+        [DisplayName("Contact owner/occupant for access?")]
+        public bool ContactForAccess { get; set; }
 
         public string LegalDescription { get; set; }
 
