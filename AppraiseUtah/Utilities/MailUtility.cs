@@ -89,67 +89,30 @@ namespace AppraiseUtah.Utilities
 
             var body = new StringBuilder();
 
-            // Build the CSS
-            body.Append(@"<link href=""http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700"" rel=""stylesheet"" type=""text/css"" />");
-            body.Append(@"<link href=""http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic"" rel=""stylesheet"" type=""text/css"" />");
-            body.Append("<style>");
-            body.Append(@"html,body{background-color:#f8f8f8;font-family:""Open Sans"", Calibri, Candara, Arial, sans-serif;font-size:15px;height:100%;margin:10px 20px;padding:0}");
-            body.Append(@".green-header{color:#6abe59}");
-            body.Append(@"h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:500;line-height:1.1;color:inherit}");
-            body.Append(@"h2{font-size:32px}");
-            body.Append(@"h1,h2,h3{margin-top:21px;margin-bottom:10.5px}");
-            body.Append(@"h4{font-size:19px}");
-            body.Append(@"h4,h5,h6{margin-top:10.5px;margin-bottom:10.5px}");
-            body.Append(@"#ConfirmationInfo{border:none;border-bottom:1px dashed #a3a3a3;border-top:1px dashed #a3a3a3;margin-top:15px;min-height:200px;padding:0 10px}");
-            body.Append(@"fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}");
-            body.Append(@"legend{display:block;line-height:inherit;color:#333;border-bottom:1px solid #e5e5e5}");
-            body.Append(@"#ConfirmationInfo > legend{border:none;font-size:18px;margin-bottom:5px;margin-left:15px;width:auto;padding:0 4px 4px}");
-            body.Append(@"#ConfirmationInfo .confirmation-section{font-size:13px;overflow:auto;margin:0 0 8px;padding:5px 0}");
-            body.Append(@"#ConfirmationInfo .confirmation-section .section-label{color:#19aacf;float:left;font-weight:700;vertical-align:top;width:150px}");
-            body.Append(@"#appraiserDisplay .appraiser-name{margin-bottom:3px;margin-top:0}");
-            body.Append(@"#appraiserDisplay .appraiser-data{clear:both;font-size:13px;line-height:normal;margin-top:0;overflow:auto}");
-            body.Append(@"address{display:block;font-style:normal;width:180px}");
-            body.Append(@".pull-left{float:left!important}");
-            body.Append(@"abbr[title],abbr[data-original-title]{cursor:help;border-bottom:1px dotted #999}");
-            body.Append(@"abbr[title]{border-bottom:1px dotted}");
-            body.Append(@"abbr{margin-right:6px}");
-            body.Append(@".email{color:#428bca}");
-            body.Append(@"a{color:#428bca;text-decoration:none}");
-            body.Append(@"a:hover,a:focus{color:#2a6496;text-decoration:underline}");
-            body.Append(@"#ConfirmationInfo .confirmation-section .name{font-size:16px}");
-            body.Append(@"#ConfirmationInfo .occupant-label{color:#707070;font-style:italic;float:left;margin-right:10px;vertical-align:top}");
-            body.Append(@"#ConfirmationInfo .occupant-label span{border-bottom:1px dotted #999}");
-            body.Append(@".trailing-label{color:#707070;font-style:italic}");
-            body.Append(@"strong{margin:0 5px}");
-            body.Append(@"#additionalComments{margin-left:0}");
-            body.Append(@"#ConfirmationInfo .confirmation-section .section-data,#ConfirmationInfo .confirmation-section .section-data-col-2,#ConfirmationInfo .confirmation-section .section-data-col-1,#ConfirmationInfo .occupant-data{float:left}");
-            body.Append(@"#ConfirmationInfo .contact-for-access,#ConfirmationInfo .confirmation-section .sales-info{clear:both;margin-top:4px}");
-            body.Append(@"#OrderDisclaimer{color:#959595;font-size:13px;font-style:italic;text-align:center;}");
-            body.Append(@".clearfix:before, .clearfix:after {content: "" "";display: table;}");
-            body.Append("</style>");
+            body.Append(@"<div style=""font-family:Tahoma, Calibri, Arial, sans-serif;font-size:15px;margin:10px 20px;padding:0"">");
 
             // Header
             if (clientConfirmation)
             {
-                body.Append(@"<h2 class=""green-header"">Thank you for your order at <em>AppraiseUtah.com</em></h2>");
-                body.Append(@"<h4 class=""green-header"">Your appraisal order number is:  <strong>" + appraisal.Appraisal.Id + "</strong></h4>");
+                body.Append(@"<h2 style=""line-height:1.1;font-size:32px;margin-top:21px;margin-bottom:5px;color:#6abe59;font-weight:normal"">Thank you for your order at <em>AppraiseUtah.com</em></h2>");
+                body.Append(@"<h4 style=""line-height:1.1;font-size:24px;margin-top:0;margin-bottom:10.5px;color:#6abe59;font-weight:normal"">Your appraisal order number is:  <strong style=""margin:0 5px"">" + appraisal.Appraisal.Id + "</strong></h4>");
             }
             else
             {
-                body.Append(@"<h2 class=""green-header"">You have received a new Appraisal Order through <em>AppraiseUtah.com</em></h2>");
-                body.Append(@"<h4 class=""green-header"">The appraisal order number is:  <strong>" + appraisal.Appraisal.Id + "</strong></h4>");
+                body.Append(@"<h2 style=""line-height:1.1;font-size:32px;margin-top:21px;margin-bottom:5px;color:#6abe59;font-weight:normal"">You have received a new Appraisal Order through <em>AppraiseUtah.com</em></h2>");
+                body.Append(@"<h4 style=""line-height:1.1;font-size:24px;margin-top:0;margin-bottom:10.5px;color:#6abe59;font-weight:normal"">The appraisal order number is:  <strong style=""margin:0 5px"">" + appraisal.Appraisal.Id + "</strong></h4>");
             }
 
-            body.Append(@"<fieldset id=""ConfirmationInfo"">");
-            body.Append(@"<legend>Appraisal Order Information</legend>");
+            body.Append(@"<fieldset id=""ConfirmationInfo"" style=""border:none;border-bottom:1px dashed #a3a3a3;border-top:1px dashed #a3a3a3;margin-top:15px;min-height:200px;padding:0 10px 20px 0"">");
+            body.Append(@"<legend style=""display:block;line-height:inherit;color:#333;border:none;font-size:22px;margin-bottom:5px;margin-left:15px;width:auto;padding:0 4px 4px"">Appraisal Order Information</legend>");
 
             // Build the APPRAISER section
-            body.Append(@"<div class=""confirmation-section"">");
-            body.Append(@"<div class=""section-label col-xs-2"">Appraiser</div>");
-            body.Append(@"<div id=""appraiserDisplay"" class=""section-data col-xs-10"">");
-            body.Append(@"<h4 class=""appraiser-name"">" + appraiser.CompanyName + @"<span class=""designation"">" + professionalDesignations + "</span></h4>");
-            body.Append(@"<div class=""appraiser-data"">");
-            body.Append(@"<address class=""pull-left"">");
+            body.Append(@"<div style=""font-size:13px;overflow:auto;margin:0 0 8px;padding:5px 0"">");
+            body.Append(@"<div class=""col-xs-2"" style=""color:#19aacf;float:left;font-weight:700;vertical-align:top;width:150px"">Appraiser</div>");
+            body.Append(@"<div id=""appraiserDisplay"" style=""float:left"">");
+            body.Append(@"<h4 style=""line-height:1.1;color:inherit;font-size:19px;margin-top:0;margin-bottom:10.5px;font-weight:normal"">" + appraiser.CompanyName + @"<span class=""designation"">" + professionalDesignations + "</span></h4>");
+            body.Append(@"<div style=""clear:both;font-size:13px;line-height:normal;margin-top:0;overflow:auto"">");
+            body.Append(@"<address style=""display:block;font-style:normal;width:180px;float:left!important"">");
             body.Append(appraiser.Address.Address1).Append("<br />");
             if (!string.IsNullOrEmpty(appraiser.Address.Address2))
             {
@@ -159,7 +122,7 @@ namespace AppraiseUtah.Utilities
             body.Append(appraiser.Address.StateCode).Append("  ");
             body.Append(appraiser.Address.PostalCode);
             body.Append(@"</address>");
-            body.Append(@"<div class=""contact pull-left"">");
+            body.Append(@"<div class=""contact"" style=""float:left!important"">");
             body.Append(buildContactItems(appraiser));
             body.Append(@"</div>");
             body.Append(@"</div>");
@@ -167,8 +130,8 @@ namespace AppraiseUtah.Utilities
             body.Append(@"</div>");
 
             // Build the CLIENT section
-            body.Append(@"<div class=""confirmation-section"">");
-            body.Append(@"<div class=""section-label col-xs-2"">");
+            body.Append(@"<div style=""font-size:13px;overflow:auto;margin:0 0 8px;padding:5px 0"">");
+            body.Append(@"<div class=""col-xs-2"" style=""color:#19aacf;float:left;font-weight:700;vertical-align:top;width:150px"">");
             if (clientConfirmation)
             {
                 body.Append("Your Info");
@@ -178,13 +141,15 @@ namespace AppraiseUtah.Utilities
                 body.Append("Client Info");
             }            
             body.Append(@"</div>");
-            body.Append(@"<div class=""section-data col-xs-10"">");
+            body.Append(@"<div style=""float:left"">");
+            body.Append(@"<div style=""font-size:16px"">");
+            body.Append(appraisal.Appraisal.ClientPerson.FirstName).Append(" ").Append(appraisal.Appraisal.ClientPerson.LastName);
             if (!string.IsNullOrEmpty(appraisal.Appraisal.ClientPerson.CompanyName))
             {
-                body.Append(@"<div class=""name"">" + appraisal.Appraisal.ClientPerson.CompanyName + "</div>");
+                body.Append(@" - <em>" + appraisal.Appraisal.ClientPerson.CompanyName + "</em>");
             }
-            body.Append(@"<div class=""name"">").Append(appraisal.Appraisal.ClientPerson.FirstName).Append(" ").Append(appraisal.Appraisal.ClientPerson.LastName).Append("</div>");
-            body.Append(@"<address class=""pull-left"">");
+            body.Append("</div>"); 
+            body.Append(@"<address style=""display:block;font-style:normal;width:180px;float:left!important"">");
             body.Append(appraisal.Appraisal.ClientAddress.Address1).Append("<br />");
             if (!string.IsNullOrEmpty(appraisal.Appraisal.ClientAddress.Address2))
             {
@@ -194,19 +159,19 @@ namespace AppraiseUtah.Utilities
             body.Append(appraisal.Appraisal.ClientAddress.StateCode).Append("  ");
             body.Append(appraisal.Appraisal.ClientAddress.PostalCode);
             body.Append(@"</address>");
-            body.Append(@"<div class=""section-data-col-2"">");
-            body.Append(@"<abbr title=""phone"">P:</abbr>" + appraisal.Appraisal.ClientPerson.Phone + "<br />");
-            body.Append(@"<a href=""mailto:" + appraisal.Appraisal.ClientPerson.Email + @""" class=""email"">" + appraisal.Appraisal.ClientPerson.Email + "</a>");
+            body.Append(@"<div style=""float:left"">");
+            body.Append(@"<abbr title=""phone"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">P:</abbr>" + appraisal.Appraisal.ClientPerson.Phone + "<br />");
+            body.Append(@"<a href=""mailto:" + appraisal.Appraisal.ClientPerson.Email + @""" class=""email"" style=""color:#428bca;text-decoration:none"">" + appraisal.Appraisal.ClientPerson.Email + "</a>");
             body.Append(@"</div>");
             body.Append(@"</div>");
             body.Append(@"</div>");
 
             // Build the PROPERTY section
-            body.Append(@"<div class=""confirmation-section"">");
-            body.Append(@"<div class=""section-label col-xs-2"">Property Info</div>");
-            body.Append(@"<div class=""section-data col-xs-10"">");
+            body.Append(@"<div style=""font-size:13px;overflow:auto;margin:0 0 8px;padding:5px 0"">");
+            body.Append(@"<div class=""col-xs-2"" style=""color:#19aacf;float:left;font-weight:700;vertical-align:top;width:150px"">Property Info</div>");
+            body.Append(@"<div style=""float:left"">");
 
-            body.Append(@"<address class=""pull-left"">");
+            body.Append(@"<address style=""display:block;font-style:normal;width:180px;float:left!important"">");
             body.Append(propertyType.PropertyTypeDescription).Append("<br />");
             body.Append(propertyAddress.Address1).Append("<br />");
             if (!string.IsNullOrEmpty(propertyAddress.Address2))
@@ -216,15 +181,15 @@ namespace AppraiseUtah.Utilities
             body.Append(propertyAddress.City).Append(", ").Append(propertyAddress.StateCode).Append(" ").Append(propertyAddress.PostalCode);
             body.Append("</address>");
 
-            body.Append(@"<div class=""section-data-col-2"">");
+            body.Append(@"<div style=""float:left"">");
 
             var dataPresent = false;
             if (OccupantDataPresent(appraisal))
             {
-                body.Append(@"<div class=""occupant-label"">");
-                body.Append(@"<span>Occupant:</span>");
+                body.Append(@"<div style=""float:left"">");
+                body.Append(@"<span style=""color:#707070;font-style:italic;float:left;margin-right:10px;vertical-align:top"">Occupant:</span>");
                 body.Append(@"</div>");
-                body.Append(@"<div class=""occupant-data"">");
+                body.Append(@"<div style=""float:left"">");
                 if (!string.IsNullOrEmpty(occupant.FirstName) || !string.IsNullOrEmpty(occupant.LastName))
                 {
                     body.Append(@"<span class=""occupant"">").Append(occupant.FirstName).Append(" ").Append(occupant.LastName).Append("</span>");
@@ -236,7 +201,7 @@ namespace AppraiseUtah.Utilities
                     {
                         body.Append(@"<br />");
                     }
-                    body.Append(@"<abbr title=""phone"">P:</abbr>").Append(occupant.Phone);
+                    body.Append(@"<abbr title=""phone"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">P:</abbr>").Append(occupant.Phone);
                     dataPresent = true;
                 }
 
@@ -246,34 +211,34 @@ namespace AppraiseUtah.Utilities
                     {
                         body.Append(@"<br />");
                     }
-                    body.Append(@"<a href=""mailto:").Append(occupant.Email).Append(@""" class=""email"">").Append(occupant.Email).Append("</a>");
+                    body.Append(@"<a href=""mailto:").Append(occupant.Email).Append(@""" class=""email"" style=""color:#428bca;text-decoration:none"">").Append(occupant.Email).Append("</a>");
                 }
                 body.Append(@"</div>");
             }
             body.Append(@"</div>");
 
-            body.Append(@"<div class=""clearfix""></div>");
+            body.Append(@"<br style=""clear:both"" />");
 
             if (appraisal.Appraisal.ContactForAccess)
             {
-                body.Append(@"<div class=""contact-for-access"">Contact owner/occupant for access?  <strong>Yes</strong></div>");
+                body.Append(@"<div style=""clear:both;margin-top:4px"">Contact owner/occupant for access?  <strong style=""margin:0 5px"">Yes</strong></div>");
             }
 
             if (legalSalesData)
             {
-                body.Append(@"<div class=""sales-info"">");
+                body.Append(@"<div style=""clear:both;margin-top:4px"">");
                 if (property.SalesContractPrice != null)
                 {
                     body.Append(@"<div class=""price"">");
                     body.Append(string.Format("{0:C0}", property.SalesContractPrice));
-                    body.Append(@"<span class=""trailing-label"">- sales/contract price</span>");
+                    body.Append(@"<span style=""color:#707070;font-style:italic"">- sales/contract price</span>");
                     body.Append(@"</div>");
                 }
 
                 if (!string.IsNullOrEmpty(property.LegalDescription))
                 {
-                    body.Append(@"<div class=""legal-description"">");
-                    body.Append(@"<strong>Legal description:</strong>");
+                    body.Append(@"<div style=""margin-top:4px;"">");
+                    body.Append(@"<strong style=""margin:0 5px 0 0"">Legal description:</strong>");
                     body.Append(property.LegalDescription);
                     body.Append(@"</div>");
                 }
@@ -284,19 +249,19 @@ namespace AppraiseUtah.Utilities
 
 
             // Build the COMMENTS section
-            body.Append(@"<div class=""confirmation-section bottom"">");
-            body.Append(@"<div class=""section-label col-xs-2"">Comments</div>");
-            body.Append(@"<div class=""section-data col-xs-10"">");
+            body.Append(@"<div style=""font-size:13px;overflow:auto;margin:0 0 8px;padding:5px 0"">");
+            body.Append(@"<div style=""color:#19aacf;float:left;font-weight:700;vertical-align:top;width:150px"">Comments</div>");
+            body.Append(@"<div style=""float:left"">");
             if (appraisalPurpose != null)
             {
                 body.Append(@"<div>");
-                body.Append(appraisalPurpose.AppraisalPurposeDescription).Append(@"<span class=""trailing-label"">- Appraisal purpose</span>");
+                body.Append(appraisalPurpose.AppraisalPurposeDescription).Append(@"<span style=""color:#707070;font-style:italic"">- Appraisal purpose</span>");
                 body.Append(@"</div>");
             }
             if (!string.IsNullOrEmpty(appraisal.Appraisal.Comments))
             {
-                body.Append(@"<div>");
-                body.Append(@"<strong id=""additionalComments"">Additional comments:</strong>");
+                body.Append(@"<div style=""margin-top:4px"">");
+                body.Append(@"<strong style=""margin:0 5px 0 0"">Additional comments:</strong>");
                 body.Append(appraisal.Appraisal.Comments);
                 body.Append(@"</div>");
             }
@@ -311,7 +276,7 @@ namespace AppraiseUtah.Utilities
 
 
             // Build disclaimer
-            body.Append(@"<div id=""OrderDisclaimer"">");
+            body.Append(@"<div style=""color:#959595;font-size:13px;font-style:italic;text-align:center;"">");
             if (clientConfirmation)
             {
                 body.Append(BuildUserDisclaimer());
@@ -320,7 +285,9 @@ namespace AppraiseUtah.Utilities
             {
                 body.Append(BuildAppraiserDisclaimer());
             }
-            body.Append("</div>");
+            body.Append(@"</div>");
+
+            body.Append(@"</div>");
 
             return body.ToString();
         }
@@ -329,24 +296,24 @@ namespace AppraiseUtah.Utilities
         {
             var contact = "";
 
-            contact = (!string.IsNullOrEmpty(appraiser.Phone)) ? @"<abbr title=""Phone"">P:</abbr>" + appraiser.Phone : "";
+            contact = (!string.IsNullOrEmpty(appraiser.Phone)) ? @"<abbr title=""Phone"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">P:</abbr>" + appraiser.Phone : "";
 
             if (contact != "")
             {
-                contact += (!string.IsNullOrEmpty(appraiser.Fax)) ? @"<br /><abbr title=""Fax"">F:</abbr>" + appraiser.Fax : "";
+                contact += (!string.IsNullOrEmpty(appraiser.Fax)) ? @"<br /><abbr title=""Fax"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">F:</abbr>" + appraiser.Fax : "";
             }
             else
             {
-                contact += (!string.IsNullOrEmpty(appraiser.Fax)) ? @"<abbr title=""Fax"">F:</abbr>" + appraiser.Fax : "";
+                contact += (!string.IsNullOrEmpty(appraiser.Fax)) ? @"<abbr title=""Fax"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">F:</abbr>" + appraiser.Fax : "";
             }
 
             if (contact != "")
             {
-                contact += (!string.IsNullOrEmpty(appraiser.Email)) ? @"<br /><a href=""mailto:" + appraiser.Email + @""" class=""email"">" + appraiser.Email + "</a>" : "";
+                contact += (!string.IsNullOrEmpty(appraiser.Email)) ? @"<br /><a href=""mailto:" + appraiser.Email + @""" class=""email"" style=""color:#428bca;text-decoration:none"">" + appraiser.Email + "</a>" : "";
             }
             else
             {
-                contact += (!string.IsNullOrEmpty(appraiser.Email)) ? @"<a href=""mailto:" + appraiser.Email + @""" class=""email"">" + appraiser.Email + "</a>" : "";
+                contact += (!string.IsNullOrEmpty(appraiser.Email)) ? @"<a href=""mailto:" + appraiser.Email + @""" class=""email"" style=""color:#428bca;text-decoration:none"">" + appraiser.Email + "</a>" : "";
             }
 
             return contact;
