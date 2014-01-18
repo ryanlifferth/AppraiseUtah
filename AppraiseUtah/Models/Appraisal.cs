@@ -36,6 +36,8 @@ namespace AppraiseUtah.Models
 
         public Address PropertyAddress { get; set; }
 
+        [DisplayName("Sales Contract Price")]
+        [DisplayFormat(DataFormatString = "{0:c}")]
         public decimal? SalesContractPrice { get; set; }
 
         [DisplayName("Property Type")]
@@ -51,6 +53,7 @@ namespace AppraiseUtah.Models
         [DisplayName("Contact owner/occupant for access?")]
         public bool ContactForAccess { get; set; }
 
+        [DisplayName("Legal Description")]
         public string LegalDescription { get; set; }
 
         public string Comments { get; set; }

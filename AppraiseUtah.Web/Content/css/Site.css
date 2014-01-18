@@ -1,5 +1,4 @@
-﻿
-html,
+﻿html,
 body {
     background-color: #f8f8f8;
     font-family: "Open Sans", Calibri, Candara, Arial, sans-serif;
@@ -186,7 +185,7 @@ input, button, select, textarea {
     margin-bottom: 0;
 }
 
-#appraiserList .list-group-item-text { 
+#appraiserList .list-group-item-text, #appraiserDisplay .appraiser-data { 
     clear: both;
     font-size: 13px;
     line-height: normal;
@@ -199,23 +198,42 @@ input, button, select, textarea {
     margin-bottom: 5px;
 }
 
-#appraiserList a.list-group-item.active .list-group-item-text.serving {
+#appraiserList a.list-group-item.active .list-group-item-text.serving, #appraiserDisplay .serving {
     color: #d1dfea;
 }
 
-#appraiserList .list-group-item-text address { 
+#appraiserDisplay .appraiser-name {
+    margin-bottom: 3px;
+    margin-top: 0;
+
+}
+
+#appraiserDisplay .appraiser-data {
+    margin-top: 0;
+}
+
+
+#appraiserList .list-group-item-text address, #appraiserDisplay .appraiser-data address { 
     margin-bottom: 0;
     width: 250px;
 }
+#appraiserDisplay .appraiser-data address { 
+    width: 200px;
+}
 
-.contact abbr {
+abbr {
     margin-right: 6px;
 }
 
-.contact .email {
-    color: #027794;
+.email {
+    color: #428bca;
 }
 
 #appraiserList a.list-group-item.active .list-group-item-text .contact .email {
     color: #73b8c9;
+}
+
+.trailing-label {
+    color: #707070;
+    font-style: italic;
 }

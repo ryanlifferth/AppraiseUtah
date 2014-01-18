@@ -52,4 +52,43 @@ $(document).ready(
             }            
         });
 
+
+
+
+        // autofill form
+        $(document).keydown(function (e) {
+            if (e.keyCode == 65 && e.ctrlKey) {
+                alert("ctrl A");
+                // TODO:  autofill somme order information
+                /*
+                appraiserId:4
+                Appraisal.AppraiserId:4
+                Appraisal.ClientPerson.CompanyName:Ryan's Loan service
+                Appraisal.ClientPerson.FirstName:Ryan
+                Appraisal.ClientPerson.LastName:Loaner
+                Appraisal.ClientPerson.Phone:(801) 555-1234
+                Appraisal.ClientPerson.Email:ryanlifferth@gmail.com
+                Appraisal.ClientAddress.Address1:123 Company Street
+                Appraisal.ClientAddress.Address2:
+                Appraisal.ClientAddress.City:SLC
+                Appraisal.ClientAddress.StateCode:UT
+                Appraisal.ClientAddress.PostalCode:84121
+                Appraisal.OccupantPerson.FirstName:Aimee
+                Appraisal.OccupantPerson.LastName:Occupant
+                Appraisal.OccupantPerson.Phone:(801) 555-4545
+                Appraisal.OccupantPerson.Email:aimee@occupant.com
+                Appraisal.PropertyTypeCode:SFR
+                Appraisal.PropertyAddress.Address1:123 Property Place
+                Appraisal.PropertyAddress.Address2:
+                Appraisal.PropertyAddress.City:Layton
+                Appraisal.PropertyAddress.StateCode:UT
+                Appraisal.PropertyAddress.PostalCode:84111
+                Appraisal.ContactForAccess:false
+                Appraisal.SalesContractPrice:355000
+                Appraisal.LegalDescription:Legal description sample text.
+                Appraisal.AppraisalPurposeCode:SC
+                Appraisal.Comments:Please contact us at your earliest convenience.
+                */
+            }
+        });
 });

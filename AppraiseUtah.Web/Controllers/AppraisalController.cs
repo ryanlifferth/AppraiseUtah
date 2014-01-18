@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using AppraiseUtah.Models;
 using AppraiseUtah.ServiceModels;
+using AppraiseUtah.Utilities;
 using AppraiseUtah.ViewModels;
 
 namespace AppraiseUtah.Web.Controllers
@@ -19,6 +20,8 @@ namespace AppraiseUtah.Web.Controllers
         #endregion
 
 
+        #region Index
+        
         //
         // GET: /Appraisal/
 
@@ -69,9 +72,59 @@ namespace AppraiseUtah.Web.Controllers
             appraisalViewModel.Appraisal.OccupantPerson.Phone = Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.OccupantPerson.Phone);
 
             var appraisalId = _appraisalServiceModel.Save_Appraisal(appraisalViewModel);
+            appraisalViewModel.Appraisal.Id = appraisalId;
 
-            return View();
+            // Send the confirmation email
+
+            MailUtility.SendConfirmationEmail(appraisalViewModel);
+
+            return RedirectToAction("Confirmation", new { id = appraisalId });
         }
+
+        #endregion Index
+
+        #region Confirmation
+
+        //
+        // GET: /Appraisal/Confirmation
+
+        [HttpGet]
+        public ActionResult Confirmation(int id = 0)
+        {
+            AppraisalViewModel appraisalViewModel = new AppraisalViewModel();
+
+            if (id != 0)
+            {
+                appraisalViewModel.Appraisal = _appraisalServiceModel.Get_Appraisal(id);
+                //TODO:  Format phone numbers
+            }
+
+            return View(appraisalViewModel);
+        }
+
+        #endregion Confirmation
+
+
+        #region Test
+
+        //
+        // GET: /Appraisal/Test
+
+        [HttpGet]
+        public ActionResult Test(int id = 0)
+        {
+            AppraisalViewModel appraisalViewModel = new AppraisalViewModel();
+
+            if (id != 0)
+            {
+                appraisalViewModel.Appraisal = _appraisalServiceModel.Get_Appraisal(id);
+                //TODO:  Format phone numbers
+            }
+
+            return View(appraisalViewModel);
+        }
+
+        #endregion Test
 
     }
 }

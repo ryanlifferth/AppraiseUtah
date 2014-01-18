@@ -100,3 +100,96 @@ select.blank-first-child option:first-child, select.select-placeholder {
 #OrderAppraisal .submit-buttons {
     margin-bottom: 15px;
 }
+
+.green-header {
+    color: #6abe59;
+}
+
+#ConfirmationInfo {
+    border: none;
+    border-bottom: 1px dashed #a3a3a3;
+    border-top: 1px dashed #a3a3a3;
+    margin-top: 15px;
+    min-height: 200px;
+    padding: 0 10px;
+}
+
+#ConfirmationInfo > legend {
+    border: none;
+    font-size: 18px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    padding: 0 4px 4px 4px;
+    width: auto;
+}
+
+#ConfirmationInfo .confirmation-section {
+    font-size: 13px;
+    margin: 0 0 8px 0;
+    overflow: auto;
+    padding: 5px 0;
+}
+
+#ConfirmationInfo .confirmation-section .section-label {
+    color: #19aacf;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+#ConfirmationInfo .confirmation-section.bottom {
+    margin-top: 0;
+}
+
+#ConfirmationInfo .confirmation-section .name {
+    font-size: 16px;
+}
+
+#ConfirmationInfo .confirmation-section address {
+    margin-bottom: 0;
+    width: 200px;
+}
+
+#ConfirmationInfo .confirmation-section .section-data-col-2, 
+#ConfirmationInfo .confirmation-section .section-data-col-1 {
+    float: left;
+}
+
+#ConfirmationInfo .contact-for-access {
+    clear: both;
+    margin-top: 4px;
+}
+
+#ConfirmationInfo .occupant-label {
+    color: #707070;
+    font-style: italic;
+    float: left;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+#ConfirmationInfo .occupant-label span {
+    border-bottom: 1px dotted #999;
+}
+
+#ConfirmationInfo .occupant-data {
+    float: left;
+}
+
+#ConfirmationInfo .confirmation-section .sales-info {
+    clear: both;
+    margin-top: 4px;
+}
+
+#ConfirmationInfo .confirmation-section .sales-info .legal-description {
+    font-size: 12px;
+}
+
+#ConfirmationInfo .confirmation-section .sales-info .legal-description strong {
+    font-size: 13px;
+}
+
+#ConfirmationFooter {
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+}

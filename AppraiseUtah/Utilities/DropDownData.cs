@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using AppraiseUtah.Models;
 using AppraiseUtah.ServiceModels;
 
 namespace AppraiseUtah.Utilities
@@ -36,6 +37,19 @@ namespace AppraiseUtah.Utilities
         }
 
         /// <summary>
+        /// Gets a list of PropertyTypes from the service model
+        /// </summary>
+        /// <returns></returns>
+        public static List<PropertyType> GetPropertyTypeList()
+        {
+            // Get the property types
+            PropertyTypeServiceModel propertyTypeServiceModel = new PropertyTypeServiceModel();
+            return propertyTypeServiceModel.Get_PropertyTypes();
+        }
+
+
+
+        /// <summary>
         /// Gets the list of AppraisalPurposes for a dropdown
         /// </summary>
         /// <returns></returns>
@@ -44,6 +58,17 @@ namespace AppraiseUtah.Utilities
             // Get the appraisal purposes
             AppraisalPurposeServiceModel appraisalPurposeServiceModel = new AppraisalPurposeServiceModel();
             return appraisalPurposeServiceModel.Get_SelectList_AppraisalPurpose(selectedAppraisalPurpose);
+        }
+
+        /// <summary>
+        /// Gets the list of AppraisalPurposes
+        /// </summary>
+        /// <returns></returns>
+        public static List<AppraisalPurpose> GetAppraisalPurposeList()
+        {
+            // Get the appraisal purposes
+            AppraisalPurposeServiceModel appraisalPurposeServiceModel = new AppraisalPurposeServiceModel();
+            return appraisalPurposeServiceModel.Get_AppraisalPurposes();
         }
 
         #endregion
