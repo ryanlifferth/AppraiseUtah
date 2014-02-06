@@ -10,11 +10,12 @@
     margin-bottom: 2px;
     padding-right: 15px;
     text-align: right;
-    width: 180px;
+    width: 200px;
 }
 
 #OrderAppraisal .form-group {
     margin-bottom: 5px;
+    position: relative;
 }
 
 #OrderAppraisal .form-group.last-form-group {
@@ -27,7 +28,7 @@
     padding: 0;
     padding-top: 3px;
     vertical-align: top;
-    width: 180px;
+    width: 200px;
 }
 
 #OrderAppraisal .form-group .group-input {
@@ -70,6 +71,23 @@
     margin-top: 0;
 }
 
+#OrderAppraisal label.radio-inline {
+    margin-bottom: 1px;
+    text-align: left;
+    width: auto;
+    padding-right: 5px;
+}
+
+.help-icon {
+    background: transparent url(../../Content/images/help02.png) no-repeat 0 0;
+    display: inline-block;
+    height: 16px;
+    margin-left: 12px;
+    position:absolute;
+    top: 3px;
+    width: 16px;
+}
+
 select.blank-first-child option {
     color: #333;
 }
@@ -92,6 +110,13 @@ select.blank-first-child option:first-child, select.select-placeholder {
     font-size: 12px;
     width: 600px;
 }
+
+#OrderAppraisal #ClientInfo {
+    display: none;
+    padding-bottom: 10px;
+    padding-top: 3px;
+}
+
 
 #OrderAppraisal .bottom-well {
     margin-bottom: 5px;
@@ -167,8 +192,21 @@ select.blank-first-child option:first-child, select.select-placeholder {
     vertical-align: top;
 }
 
-#ConfirmationInfo .occupant-label span {
+#ConfirmationInfo .occupant-label span, #ConfirmationInfo .sub-label {
     border-bottom: 1px dotted #999;
+}
+
+#ConfirmationInfo #orderClient {
+    margin-bottom: 10px;
+    overflow: auto;
+}
+
+#ConfirmationInfo #orderClient .sub-label {
+    border-bottom: 1px dotted #999;
+    color: #707070;
+    font-size: 13px;
+    font-style: italic;
+    margin-left: 15px;
 }
 
 #ConfirmationInfo .occupant-data {
@@ -191,5 +229,6 @@ select.blank-first-child option:first-child, select.select-placeholder {
 #ConfirmationFooter {
     font-size: 12px;
     font-style: italic;
+    margin-bottom: 20px;
     text-align: center;
 }

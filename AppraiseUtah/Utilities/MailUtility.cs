@@ -73,6 +73,7 @@ namespace AppraiseUtah.Utilities
             message.Body = BuildConfirmationBody(appraisal, false);
 
             SmtpClient smtpClient = new SmtpClient();
+            smtpClient.EnableSsl = true;
             smtpClient.Send(message);
         }
 
@@ -248,20 +249,66 @@ namespace AppraiseUtah.Utilities
             body.Append(@"</div>");
 
 
-            // Build the COMMENTS section
+            // Build the APPRAISAL REPORT section
             body.Append(@"<div style=""font-size:13px;overflow:auto;margin:0 0 8px;padding:5px 0"">");
-            body.Append(@"<div style=""color:#19aacf;float:left;font-weight:700;vertical-align:top;width:150px"">Comments</div>");
+            body.Append(@"<div style=""color:#19aacf;float:left;font-weight:700;vertical-align:top;width:150px"">Appraisal Report</div>");
             body.Append(@"<div style=""float:left"">");
+
+            if (appraisal.Appraisal.Client2Person != null)
+            {
+                var orderClient = appraisal.Appraisal.Client2Person;
+                var orderClientAddress = appraisal.Appraisal.Client2Address;
+
+                body.Append(@"<div style=""color: #707070;font-style: italic;float: left;margin-right: 10px;vertical-align: top;"">");
+                body.Append(@"<span style=""border-bottom: 1px dotted #999;color: #707070;font-style: italic;"">Appraisal Client:</span>");
+                body.Append(@"</div>");
+                body.Append(@"<div style=""margin-bottom: 10px; overflow: auto;"">");
+                body.Append(@"<div>").Append(orderClient.FirstName).Append(" ").Append(orderClient.LastName).Append("</div>");
+                body.Append(@"<address style=""float: left !important;font-style: normal;line-height: 1.428571429;display: block; width: 160px;"">");
+                body.Append(orderClientAddress.Address1).Append("<br />");
+                if (!string.IsNullOrEmpty(orderClientAddress.Address2))
+                {
+                    body.Append(orderClientAddress.Address2).Append("<br />");
+                }
+                body.Append(orderClientAddress.City).Append(", ").Append(orderClientAddress.StateCode).Append("  ").Append(orderClientAddress.PostalCode);
+                body.Append(@"</address>");
+                body.Append(@"<div style=""float: left;"">");
+                body.Append(@"<abbr title=""phone"" style=""border-bottom: 1px dotted #999999;margin-right: 6px;"">P:</abbr>").Append(orderClient.Phone).Append("<br />");
+                if (!string.IsNullOrEmpty(orderClient.Email))
+                {
+                    body.Append(@"<a style=""color: #2a6496;text-decoration: underline;"" href=""mailto:").Append(orderClient.Email).Append(@""" class=""email"">").Append(orderClient.Email).Append("</a>");
+                }
+                body.Append(@"</div>");
+                body.Append(@"</div>");
+            }
+
+            if (!String.IsNullOrEmpty(appraisal.Appraisal.ReportUsers))
+            {
+                body.Append(@"<div>");
+                body.Append(@"<strong>Intended report users:</strong>  ");
+                body.Append(appraisal.Appraisal.ReportUsers);
+                body.Append(@"</div>");
+             }
+            
+            if (!String.IsNullOrEmpty(appraisal.Appraisal.DeliverReportTo))
+            {
+                body.Append(@"<div>");
+                body.Append(@"<strong>Report should be delivered to:</strong>  ");
+                body.Append(appraisal.Appraisal.DeliverReportTo);
+                body.Append(@"</div>");
+            }
+
             if (appraisalPurpose != null)
             {
                 body.Append(@"<div>");
-                body.Append(appraisalPurpose.AppraisalPurposeDescription).Append(@"<span style=""color:#707070;font-style:italic"">- Appraisal purpose</span>");
+                body.Append(@"<strong>Appraisal purpose:</strong>  ");
+                body.Append(appraisalPurpose.AppraisalPurposeDescription);
                 body.Append(@"</div>");
             }
             if (!string.IsNullOrEmpty(appraisal.Appraisal.Comments))
             {
                 body.Append(@"<div style=""margin-top:4px"">");
-                body.Append(@"<strong style=""margin:0 5px 0 0"">Additional comments:</strong>");
+                body.Append(@"<strong style=""margin:0 5px 0 0"">Additional comments:</strong>  ");
                 body.Append(appraisal.Appraisal.Comments);
                 body.Append(@"</div>");
             }

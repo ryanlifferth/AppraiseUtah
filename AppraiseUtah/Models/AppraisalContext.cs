@@ -279,6 +279,8 @@ namespace AppraiseUtah.Models
             {
                 appraisal.ClientPerson = PopulatePersonFromDataTable(data, "ClientPerson");         // Populate the Appraisal.ClientPerson object
                 appraisal.ClientAddress = PopulateAddressFromDataTable(data, "ClientAddress");      // Populate the Appraisal.ClientAddress object
+                appraisal.Client2Person = PopulatePersonFromDataTable(data, "Client2Person");         // Populate the Appraisal.ClientPerson object
+                appraisal.Client2Address = PopulateAddressFromDataTable(data, "Client2Address");      // Populate the Appraisal.ClientAddress object
                 appraisal.OccupantPerson = PopulatePersonFromDataTable(data, "OccupantPerson");     // Populate the Appraisal.OccupantPerson object
                 appraisal.PropertyAddress = PopulateAddressFromDataTable(data, "PropertyAddress");  // Populate the Appraisal.PropertyAddress object
             }
@@ -298,14 +300,17 @@ namespace AppraiseUtah.Models
 
             if (data.Rows.Count > 0) 
             {
-                person = new Person();
-                person.PersonId = (int)data.Rows[0][columnPrefix + "_PersonId"];
-                person.PersonType = data.Rows[0][columnPrefix + "_PersonType"].ToString();
-                person.FirstName = data.Rows[0][columnPrefix + "_FirstName"].ToString();
-                person.LastName = data.Rows[0][columnPrefix + "_LastName"].ToString();
-                person.CompanyName = data.Rows[0][columnPrefix + "_CompanyName"].ToString();
-                person.Email = data.Rows[0][columnPrefix + "_Email"].ToString();
-                person.Phone = data.Rows[0][columnPrefix + "_Phone"].ToString();
+                if (!String.IsNullOrEmpty(data.Rows[0][columnPrefix + "_PersonId"].ToString()))
+                {
+                    person = new Person();
+                    person.PersonId = (int)data.Rows[0][columnPrefix + "_PersonId"];
+                    if (data.Columns.Contains(columnPrefix + "_PersonType")) person.PersonType = data.Rows[0][columnPrefix + "_PersonType"].ToString();
+                    person.FirstName = data.Rows[0][columnPrefix + "_FirstName"].ToString();
+                    person.LastName = data.Rows[0][columnPrefix + "_LastName"].ToString();
+                    if (data.Columns.Contains(columnPrefix + "_CompanyName")) person.CompanyName = data.Rows[0][columnPrefix + "_CompanyName"].ToString();
+                    person.Email = data.Rows[0][columnPrefix + "_Email"].ToString();
+                    person.Phone = data.Rows[0][columnPrefix + "_Phone"].ToString();
+                }
             }
 
             return person;
@@ -324,18 +329,22 @@ namespace AppraiseUtah.Models
 
             if (data.Rows.Count > 0)
             {
-                address = new Address();
-                address.AddressId = (int)data.Rows[0][columnPrefix + "AddressId"];
-                
-                address.AddressType = data.Rows[0].Table.Columns.Contains(columnPrefix + "AddressType") ? 
-                    data.Rows[0][columnPrefix + "AddressType"].ToString() : 
-                    null;
-                
-                address.Address1 = data.Rows[0][columnPrefix + "Address1"].ToString();
-                address.Address2 = data.Rows[0][columnPrefix + "Address2"].ToString();
-                address.City = data.Rows[0][columnPrefix + "City"].ToString();
-                address.StateCode = data.Rows[0][columnPrefix + "StateCode"].ToString();
-                address.PostalCode = data.Rows[0][columnPrefix + "PostalCode"].ToString();
+                if (!String.IsNullOrEmpty(data.Rows[0][columnPrefix + "AddressId"].ToString()))
+                {
+
+                    address = new Address();
+                    address.AddressId = (int)data.Rows[0][columnPrefix + "AddressId"];
+
+                    address.AddressType = data.Rows[0].Table.Columns.Contains(columnPrefix + "AddressType") ?
+                        data.Rows[0][columnPrefix + "AddressType"].ToString() :
+                        null;
+
+                    address.Address1 = data.Rows[0][columnPrefix + "Address1"].ToString();
+                    address.Address2 = data.Rows[0][columnPrefix + "Address2"].ToString();
+                    address.City = data.Rows[0][columnPrefix + "City"].ToString();
+                    address.StateCode = data.Rows[0][columnPrefix + "StateCode"].ToString();
+                    address.PostalCode = data.Rows[0][columnPrefix + "PostalCode"].ToString();
+                }
             }
 
             return address;

@@ -17,7 +17,14 @@ namespace AppraiseUtah.Utilities
         /// <returns></returns>
         public static string RemoveNonNumeric(string input)
         {
-            return new string(input.Where(c => char.IsDigit(c)).ToArray());
+            if (!string.IsNullOrEmpty(input))
+            {
+                return new string(input.Where(c => char.IsDigit(c)).ToArray());
+            }
+            else
+            {
+                return input;
+            }
         }
 
         #endregion

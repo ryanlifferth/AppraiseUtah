@@ -32,6 +32,10 @@ namespace AppraiseUtah.Models
 
         public Address ClientAddress { get; set; }
 
+        public Person Client2Person { get; set; }
+
+        public Address Client2Address { get; set; }
+
         public Person OccupantPerson { get; set; }
 
         public Address PropertyAddress { get; set; }
@@ -49,6 +53,12 @@ namespace AppraiseUtah.Models
 
         [DisplayName("Appraisal Purpose")]
         public string AppraisalPurposeCode { get; set; }
+
+        [DisplayName("Intended report users?")]
+        public string ReportUsers { get; set; }
+
+        [DisplayName("Deliver report copies to")]
+        public string DeliverReportTo { get; set; }
 
         [DisplayName("Contact owner/occupant for access?")]
         public bool ContactForAccess { get; set; }

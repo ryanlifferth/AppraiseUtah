@@ -70,6 +70,12 @@ namespace AppraiseUtah.Web.Controllers
 
             appraisalViewModel.Appraisal.ClientPerson.Phone = Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.ClientPerson.Phone);
             appraisalViewModel.Appraisal.OccupantPerson.Phone = Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.OccupantPerson.Phone);
+            appraisalViewModel.Appraisal.Client2Person.Phone = Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.Client2Person.Phone);
+
+            if (Request["AreYouClient"] == "Yes")
+            {
+                ClearOrderClientData(ref appraisalViewModel);
+            }
 
             var appraisalId = _appraisalServiceModel.Save_Appraisal(appraisalViewModel);
             appraisalViewModel.Appraisal.Id = appraisalId;
@@ -125,6 +131,29 @@ namespace AppraiseUtah.Web.Controllers
         }
 
         #endregion Test
+
+        #region Private Methods
+
+        private void ClearOrderClientData(ref AppraisalViewModel appraisalViewModel)
+        {
+            appraisalViewModel.Appraisal.Client2Person.PersonId = 0;
+            appraisalViewModel.Appraisal.Client2Person.FirstName = "";
+            appraisalViewModel.Appraisal.Client2Person.LastName = "";
+            appraisalViewModel.Appraisal.Client2Person.CompanyName = "";
+            appraisalViewModel.Appraisal.Client2Person.Phone = "";
+            appraisalViewModel.Appraisal.Client2Person.Email = "";
+            appraisalViewModel.Appraisal.Client2Person.PersonType = "";
+
+            appraisalViewModel.Appraisal.Client2Address.AddressId = 0;
+            appraisalViewModel.Appraisal.Client2Address.Address1 = "";
+            appraisalViewModel.Appraisal.Client2Address.Address2 = "";
+            appraisalViewModel.Appraisal.Client2Address.City = "";
+            appraisalViewModel.Appraisal.Client2Address.StateCode = "";
+            appraisalViewModel.Appraisal.Client2Address.PostalCode = "";
+            appraisalViewModel.Appraisal.Client2Address.AddressType = "";
+        }
+
+        #endregion
 
     }
 }

@@ -52,43 +52,93 @@ $(document).ready(
             }            
         });
 
+        // Tooltips
+        $("[data-toggle='tooltip']").tooltip({
+            'placement': 'right'
+        });
+
+        $('input:radio[id="AreYouClient"]').change(
+            function () {
+                if ($(this).is(':checked') && $(this).val() == 'No') {
+                    $("#OrderAppraisal #ClientInfo").show("fadeIn", "swing", "slow");
+
+                    // Add validation rules
+                    $("#Appraisal_Client2Person_FirstName").rules("add", { required: true, messages: { required: "First Name is required." } });
+                    $("#Appraisal_Client2Person_LastName").rules("add", { required: true, messages: { required: "Last Name is required." } });
+                    $("#Appraisal_Client2Person_Phone").rules("add", { required: true, messages: { required: "Phone is required." } });
+                    $("#Appraisal_Client2Address_Address1").rules("add", { required: true, messages: { required: "Address is required." } });
+                    $("#Appraisal_Client2Address_City").rules("add", { required: true, messages: { required: "City is required." } });
+                    $("#Appraisal_Client2Address_StateCode").rules("add", { required: true, messages: { required: "State is required." } });
+                    $("#Appraisal_Client2Address_PostalCode").rules("add", { required: true, messages: { required: "Zip Code is required." } });
+
+                } else {
+                    $("#OrderAppraisal #ClientInfo").hide("slow");
+
+                    // Remove validation
+                    removeValidation($("#Appraisal_Client2Person_FirstName"));
+                    removeValidation($("#Appraisal_Client2Person_LastName"));
+                    removeValidation($("#Appraisal_Client2Person_Phone"));
+                    removeValidation($("#Appraisal_Client2Address_Address1"));
+                    removeValidation($("#Appraisal_Client2Address_City"));
+                    removeValidation($("#Appraisal_Client2Address_StateCode"));
+                    removeValidation($("#Appraisal_Client2Address_PostalCode"));
+                    // Remove validation messages
+                    $("#ClientInfo span.field-validation-error").html("");
+                    $("#ClientInfo span.field-validation-valid").html("");
+
+
+                    $("#OrderAppraisal").validate();
+                }
+            });
+
+        ///
+        /// Remove validation rules from the form element
+        ///
+        var removeValidation = function (formElement) {
+            // Remove validation rules
+            formElement.rules("remove");
+            formElement.removeClass("input-validation-error");
+        };
+
 
 
 
         // autofill form
         $(document).keydown(function (e) {
-            if (e.keyCode == 65 && e.ctrlKey) {
-                alert("ctrl A");
-                // TODO:  autofill somme order information
-                /*
-                appraiserId:4
-                Appraisal.AppraiserId:4
-                Appraisal.ClientPerson.CompanyName:Ryan's Loan service
-                Appraisal.ClientPerson.FirstName:Ryan
-                Appraisal.ClientPerson.LastName:Loaner
-                Appraisal.ClientPerson.Phone:(801) 555-1234
-                Appraisal.ClientPerson.Email:ryanlifferth@gmail.com
-                Appraisal.ClientAddress.Address1:123 Company Street
-                Appraisal.ClientAddress.Address2:
-                Appraisal.ClientAddress.City:SLC
-                Appraisal.ClientAddress.StateCode:UT
-                Appraisal.ClientAddress.PostalCode:84121
-                Appraisal.OccupantPerson.FirstName:Aimee
-                Appraisal.OccupantPerson.LastName:Occupant
-                Appraisal.OccupantPerson.Phone:(801) 555-4545
-                Appraisal.OccupantPerson.Email:aimee@occupant.com
-                Appraisal.PropertyTypeCode:SFR
-                Appraisal.PropertyAddress.Address1:123 Property Place
-                Appraisal.PropertyAddress.Address2:
-                Appraisal.PropertyAddress.City:Layton
-                Appraisal.PropertyAddress.StateCode:UT
-                Appraisal.PropertyAddress.PostalCode:84111
-                Appraisal.ContactForAccess:false
-                Appraisal.SalesContractPrice:355000
-                Appraisal.LegalDescription:Legal description sample text.
-                Appraisal.AppraisalPurposeCode:SC
-                Appraisal.Comments:Please contact us at your earliest convenience.
-                */
+            if (e.keyCode == 73 && e.ctrlKey) {
+
+                //http://css-tricks.com/snippets/javascript/javascript-keycodes/
+                
+                //appraiserId:4
+                //Appraisal.AppraiserId:4
+                $("#Appraisal_ClientPerson_CompanyName").val("Ryan's Loan service");
+                $("#Appraisal_ClientPerson_FirstName").val("Ryan");
+                $("#Appraisal_ClientPerson_LastName").val("Loaner");
+                $("#Appraisal_ClientPerson_Phone").val("(801) 555-1234");
+                $("#Appraisal_ClientPerson_Email").val("ryanlifferth@gmail.com");
+                $("#Appraisal_ClientAddress_Address1").val("123 Company Street");
+                //#Appraisal_ClientAddress_Address2").val("");
+                $("#Appraisal_ClientAddress_City").val("SLC");
+                $("#Appraisal_ClientAddress_StateCode").val("UT");
+                $("#Appraisal_ClientAddress_PostalCode").val("84121");
+                $("#Appraisal_OccupantPerson_FirstName").val("Aimee");
+                $("#Appraisal_OccupantPerson_LastName").val("Occupant");
+                $("#Appraisal_OccupantPerson_Phone").val("(801) 555-4545");
+                $("#Appraisal_OccupantPerson_Email").val("aimee@occupant.com");
+                $("#Appraisal_PropertyTypeCode").val("SFR");
+                $("#Appraisal_PropertyAddress_Address1").val("123 Property Place");
+                //#Appraisal_PropertyAddress_Address2").val("");
+                $("#Appraisal_PropertyAddress_City").val("Layton");
+                $("#Appraisal_PropertyAddress_StateCode").val("UT");
+                $("#Appraisal_PropertyAddress_PostalCode").val("84111");
+                //Appraisal_ContactForAccess").val("false");
+                $("#Appraisal_SalesContractPrice").val("355000");
+                $("#Appraisal_LegalDescription").val("Legal description sample text.");
+                $("#Appraisal_ReportUsers").val("Some company");
+                $("#Appraisal_DeliverReportTo").val("Some company");
+                $("#Appraisal_AppraisalPurposeCode").val("SC");
+                $("#Appraisal_Comments").val("Please contact us at your earliest convenience.");
+           
             }
         });
 });

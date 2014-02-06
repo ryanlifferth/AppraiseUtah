@@ -97,6 +97,17 @@ namespace AppraiseUtah.ServiceModels
                                                                 "@PropertyTypeCode," +
                                                                 "@AppraisalTypeCode," +
                                                                 "@AppraisalPurposeCode," +
+                                                                "@orderClientFirstName, " +
+                                                                "@orderClientLastName, " +
+                                                                "@orderClientEmail, " +
+                                                                "@orderClientPhone, " +
+                                                                "@orderClientAddress1, " +
+                                                                "@orderClientAddress2, " +
+                                                                "@orderClientCity, " +
+                                                                "@orderClientStateCode, " +
+                                                                "@orderClientPostalCode, " +
+                                                                "@ReportUsers," + 
+                                                                "@DeliverReportTo," +
                                                                 "@ContactForAccess," +
                                                                 "@LegalDescription," +
                                                                 "@Comments," +
@@ -126,6 +137,19 @@ namespace AppraiseUtah.ServiceModels
                     CreateParameter("propertyTypeCode", SqlDbType.VarChar, appraisalViewModel.Appraisal.PropertyTypeCode),
                     CreateParameter("appraisalTypeCode", SqlDbType.VarChar, appraisalViewModel.Appraisal.AppraisalTypeCode),
                     CreateParameter("appraisalPurposeCode", SqlDbType.VarChar, appraisalViewModel.Appraisal.AppraisalPurposeCode),
+
+                    CreateParameter("orderClientFirstName", SqlDbType.VarChar, appraisalViewModel.Appraisal.Client2Person.FirstName),
+                    CreateParameter("orderClientLastName", SqlDbType.VarChar, appraisalViewModel.Appraisal.Client2Person.LastName),
+                    CreateParameter("orderClientEmail", SqlDbType.VarChar, appraisalViewModel.Appraisal.Client2Person.Email),
+                    CreateParameter("orderClientPhone", SqlDbType.VarChar, appraisalViewModel.Appraisal.Client2Person.Phone),
+                    CreateParameter("orderClientAddress1", SqlDbType.VarChar, appraisalViewModel.Appraisal.Client2Address.Address1),
+                    CreateParameter("orderClientAddress2", SqlDbType.VarChar, appraisalViewModel.Appraisal.Client2Address.Address2),
+                    CreateParameter("orderClientCity", SqlDbType.VarChar, appraisalViewModel.Appraisal.Client2Address.City),
+                    CreateParameter("orderClientStateCode", SqlDbType.VarChar, appraisalViewModel.Appraisal.Client2Address.StateCode),
+                    CreateParameter("orderClientPostalCode", SqlDbType.VarChar, appraisalViewModel.Appraisal.Client2Address.PostalCode),
+
+                    CreateParameter("reportUsers", SqlDbType.VarChar, appraisalViewModel.Appraisal.ReportUsers),
+                    CreateParameter("deliverReportTo", SqlDbType.VarChar, appraisalViewModel.Appraisal.DeliverReportTo),
                     CreateParameter("contactForAccess", SqlDbType.Bit, appraisalViewModel.Appraisal.ContactForAccess),
                     CreateParameter("legalDescription", SqlDbType.VarChar, appraisalViewModel.Appraisal.LegalDescription),
                     CreateParameter("comments", SqlDbType.NText, appraisalViewModel.Appraisal.Comments),
