@@ -138,6 +138,7 @@
     <Content Include="Content\css\OrderAppraisal.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\help02.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -175,7 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Views\Appraisal\PartialViews\" />
   </ItemGroup>
   <ItemGroup>
@@ -191,9 +191,9 @@
     <Content Include="Views\Appraisal\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AppraiseUtah\AppraiseUtah.csproj">
+    <ProjectReference Include="..\AppraiseUtah.Client\AppraiseUtah.Client.csproj">
       <Project>{b7604445-dd04-4b69-ac52-7f20995b4be4}</Project>
-      <Name>AppraiseUtah</Name>
+      <Name>AppraiseUtah.Client</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

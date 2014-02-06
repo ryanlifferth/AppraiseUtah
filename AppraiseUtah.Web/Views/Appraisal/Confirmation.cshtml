@@ -1,5 +1,5 @@
-﻿@using AppraiseUtah.ViewModels;
-@using AppraiseUtah.Utilities;
+﻿@using AppraiseUtah.Client.ViewModels;
+@using AppraiseUtah.Client.Utilities;
 @model AppraisalViewModel
 @{
     ViewBag.Title = "Confirmation";
@@ -260,7 +260,7 @@
 }
 
 @functions {
-    private string buildContactItems(AppraiseUtah.Models.Appraiser appraiser)
+    private string buildContactItems(AppraiseUtah.Client.Models.Appraiser appraiser)
     {
         var contact = "";
 

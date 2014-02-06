@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AppraiseUtah.Models;
-using AppraiseUtah.ServiceModels;
+using AppraiseUtah.Client.Models;
+using AppraiseUtah.Client.ServiceModels;
 
 namespace AppraiseUtah.Web.Controllers
 {

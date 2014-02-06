@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AppraiseUtah.Models;
-using AppraiseUtah.ServiceModels;
-using AppraiseUtah.Utilities;
-using AppraiseUtah.ViewModels;
+using AppraiseUtah.Client.Models;
+using AppraiseUtah.Client.ServiceModels;
+using AppraiseUtah.Client.Utilities;
+using AppraiseUtah.Client.ViewModels;
 
 namespace AppraiseUtah.Web.Controllers
 {
@@ -67,10 +67,11 @@ namespace AppraiseUtah.Web.Controllers
             appraisalViewModel.Appraisal.ClientAddress.City = "SLC";
             appraisalViewModel.Appraisal.ClientAddress.PostalCode = "12345";
             appraisalViewModel.Appraisal.ClientAddress.StateCode = "UT";*/
+            
 
-            appraisalViewModel.Appraisal.ClientPerson.Phone = Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.ClientPerson.Phone);
-            appraisalViewModel.Appraisal.OccupantPerson.Phone = Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.OccupantPerson.Phone);
-            appraisalViewModel.Appraisal.Client2Person.Phone = Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.Client2Person.Phone);
+            appraisalViewModel.Appraisal.ClientPerson.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.ClientPerson.Phone);
+            appraisalViewModel.Appraisal.OccupantPerson.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.OccupantPerson.Phone);
+            appraisalViewModel.Appraisal.Client2Person.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.Client2Person.Phone);
 
             if (Request["AreYouClient"] == "Yes")
             {

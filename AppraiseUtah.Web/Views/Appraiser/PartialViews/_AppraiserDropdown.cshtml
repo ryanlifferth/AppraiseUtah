@@ -1,4 +1,4 @@
-﻿@model List<AppraiseUtah.Models.Appraiser>
+﻿@model List<AppraiseUtah.Client.Models.Appraiser>
 
 <div class="dropdown" id="appraiserList">
     <a href="#" data-toggle="dropdown" class="dropdown-selected">
@@ -46,7 +46,7 @@
 
 
 @functions {
-    private string buildContactItems(AppraiseUtah.Models.Appraiser appraiser)
+    private string buildContactItems(AppraiseUtah.Client.Models.Appraiser appraiser)
     {
         var contact = "";
 
