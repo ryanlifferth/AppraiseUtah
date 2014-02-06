@@ -211,7 +211,8 @@ namespace AppraiseUtah.Models
             catch (Exception ex)
             {
                 // Do something
-
+                String s = ex.Message;
+                throw ex;
             }
             finally
             {
