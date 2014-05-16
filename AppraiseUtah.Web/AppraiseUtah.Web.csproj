@@ -136,6 +136,7 @@
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\css\OrderAppraisal.css" />
+    <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\help02.png" />
@@ -176,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Home\" />
     <Folder Include="Views\Appraisal\PartialViews\" />
   </ItemGroup>
   <ItemGroup>

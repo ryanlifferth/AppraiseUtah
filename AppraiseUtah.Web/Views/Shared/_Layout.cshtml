@@ -9,25 +9,27 @@
     @RenderSection("htmlhead", required: false)
 </head>
 <body>
-    <div id="pageContainer">
-        @{Html.RenderPartial("_Navigation");}
+    <div class="wrapper">
+        <div id="pageContainer">
+            @{Html.RenderPartial("_Navigation");}
 
-        <div id="body" class="container">
-            @RenderBody()
-        </div>
+            <div id="body" class="container">
+                @RenderBody()
+            </div>
 
-        <footer id="footer">
-            <div class="footer-banner">
-                <div class="container">
-                    We would love to hear from you
-                    <a class="btn btn-default btn-green" href="#">Feedback</a>
+            <footer id="footer">
+                <div class="footer-banner">
+                    <div class="container">
+                        We would love to hear from you
+                        <a class="btn btn-default btn-green" href="#">Feedback</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="container" id="footerContent">
-                <p>&copy; @DateTime.Now.Year AppraiseUtah.com</p>
-            </div>
-        </footer>
+                <div class="container" id="footerContent">
+                    <p>&copy; @DateTime.Now.Year AppraiseUtah.com</p>
+                </div>
+            </footer>
+        </div>
     </div>
 
     <script src="@Url.Content("~/Scripts/Lib/jquery-2.0.3.min.js")"></script>
