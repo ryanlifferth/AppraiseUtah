@@ -6,35 +6,34 @@
     <title>@*AppraiseUtah.com*@ @(!String.IsNullOrEmpty(ViewBag.Title) ? " - " + ViewBag.Title : String.Empty)</title>
     <link href="@Url.Content("~/Content/bootstrap/bootstrap.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/css/Site.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:100,300,400|Open+Sans:300,400">
     @RenderSection("htmlhead", required: false)
 </head>
 <body>
-    <div class="wrapper">
-        <div id="pageContainer">
-            @{Html.RenderPartial("_Navigation");}
+    <div id="pageContainer">
+        @{Html.RenderPartial("_Navigation");}
 
-            <div id="body" class="container">
-                @RenderBody()
-            </div>
-
-            <footer id="footer">
-                <div class="footer-banner">
-                    <div class="container">
-                        We would love to hear from you
-                        <a class="btn btn-default btn-green" href="#">Feedback</a>
-                    </div>
-                </div>
-
-                <div class="container" id="footerContent">
-                    <p>&copy; @DateTime.Now.Year AppraiseUtah.com</p>
-                </div>
-            </footer>
+        <div id="body" class="container">
+            @RenderBody()
         </div>
+
     </div>
+    <footer id="footer">
+        <div class="footer-banner">
+            <div class="container footer-text">
+                We would love to hear from you
+                <a class="btn btn-default btn-green" href="#">Feedback</a>
+            </div>
+        </div>
+
+        <div class="container" id="footerContent">
+            <p>&copy; @DateTime.Now.Year AppraiseUtah.com</p>
+        </div>
+    </footer>
 
     <script src="@Url.Content("~/Scripts/Lib/jquery-2.0.3.min.js")"></script>
     <script src="@Url.Content("~/Scripts/Lib/bootstrap.min.js")"></script>
-    
+
     @RenderSection("PageScripts", false)
 </body>
 </html>

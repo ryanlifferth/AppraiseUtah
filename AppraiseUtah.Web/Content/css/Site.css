@@ -8,25 +8,23 @@ body {
     padding: 0;
 }
 
-.wrapper {
-    background: url("../../Images/Home/House01.png") no-repeat top center;
-    background-size: cover;
-}
 
 #pageContainer {
     min-height: 100%;
-    position: relative;
 }
 
 #body {
+    overflow:auto;
     padding-bottom: 95px;
 }
 
 footer {
    bottom: 0;
+   clear: both;
    display: block;
    height: 95px;   /* Height of the footer */
-   position: absolute;
+   margin-top: -95px;
+   position: relative;
    width: 100%;
 }
 
@@ -49,6 +47,10 @@ footer .footer-banner {
 
 footer .footer-banner .container {
     text-align: center;
+}
+
+footer .footer-banner .footer-text {
+    font-weight: 300;
 }
 
 
@@ -245,3 +247,41 @@ abbr {
     color: #707070;
     font-style: italic;
 }
+
+
+/* Interest Rates Display */
+.rate-container {
+    color: #fff;
+    font-family: 'Lato';
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    box-sizing: padding-box;
+}
+.rate-container .rate {
+    font-weight: 100;
+    font-size: 90px;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+}
+
+.rate-container .rate-title {
+    bottom: -3px;
+    display: block;
+    float: right;
+    font-weight: 300;
+    font-size: 20px;
+    position: relative;
+    right: -10px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    transform: rotate(90deg);
+    transform-origin: left;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: left;
+    -moz-transform: rotate(90deg);
+    -moz-transform-origin: left;
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin: left;
+}
+
+

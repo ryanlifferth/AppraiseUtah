@@ -52,8 +52,11 @@
     <Compile Include="Common\Constants\AppraisalType.cs" />
     <Compile Include="Common\Constants\PersonType.cs" />
     <Compile Include="Common\Constants\PropertyType.cs" />
+    <Compile Include="Models\Rate.cs" />
+    <Compile Include="Models\Rates.cs" />
     <Compile Include="ServiceModels\AppraisalPurposeServiceModel.cs" />
     <Compile Include="ServiceModels\AppraisalServiceModel.cs" />
+    <Compile Include="ServiceModels\RatesServiceModel.cs" />
     <Compile Include="Utilities\DropDownData.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Appraisal.cs" />

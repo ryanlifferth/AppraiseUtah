@@ -1,0 +1,5 @@
+﻿#pageContainer {
+    background: url("../../Images/Home/House01.png") no-repeat top center;
+    background-size: cover;
+    min-height: 100%;
+}

@@ -6,8 +6,31 @@
 <h2>Index</h2>
 
 
-@{ Html.RenderAction("_Appraisers", "Home"); }
+<div class="col-md-8">
+    @{ Html.RenderAction("_Appraisers", "Home"); }
+</div>
+<div class="col-md-4">
+    <div id="Thirty" class="rate-container">
+        <span class="rate-title"></span>
+        <span class="rate"></span>
+    </div>
+    <div id="Fifteen" class="rate-container">
+        <span class="rate-title"></span>
+        <span class="rate"></span>
+    </div>
+    <div id="FiveOne" class="rate-container">
+        <span class="rate-title"></span>
+        <span class="rate"></span>
+    </div>
+</div>
 
+
+@section htmlhead {
+    <link href="@Url.Content("~/Content/css/Index.css")" rel="stylesheet" type="text/css" />
+}
+@section PageScripts {
+    <script src="@Url.Content("~/Scripts/Common/Rates.js")"></script>
+}
 
 
 
