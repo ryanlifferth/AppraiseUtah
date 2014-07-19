@@ -3,11 +3,68 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div id="HomeContent" class="row table-row">
+
+    <div class="col-md-9 content">
+        <div class="content-well">
+            @*@{ Html.RenderAction("_Appraisers", "Home"); }*@
+
+            <h2 class="first-item">Welcome to AppraiseUtah.com</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis risus eget sapien mollis rhoncus. Nunc non justo dui. Nunc suscipit in libero sit amet suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce augue risus, laoreet sit amet pretium nec, commodo a risus. Phasellus sed nisl sapien. Pellentesque pretium pulvinar vulputate.</p>
+
+            <h2>Appraisal Orders</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis risus eget sapien mollis rhoncus. Nunc non justo dui. Nunc suscipit in libero sit amet suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce augue risus, laoreet sit amet pretium nec, commodo a risus. Phasellus sed nisl sapien. Pellentesque pretium pulvinar vulputate.</p>
+
+            <h2>Find an Appraiser</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis risus eget sapien mollis rhoncus. Nunc non justo dui. Nunc suscipit in libero sit amet suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce augue risus, laoreet sit amet pretium nec, commodo a risus. Phasellus sed nisl sapien. Pellentesque pretium pulvinar vulputate.</p>
+
+        </div>
+    </div>
+    <div class="col-md-3 sidebar">
+        <div id="RatePanelTitle" class="panel panel-title">Interest Rates</div>
+        <div id="RatePanel" class="panel">
+            <div id="Thirty" class="rate-container">
+                <span class="rate"></span>
+                <span class="rate-title"></span>
+            </div>
+            <div id="Fifteen" class="rate-container">
+                <span class="rate"></span>
+                <span class="rate-title"></span>
+            </div>
+            <div id="FiveOne" class="rate-container">
+                <span class="rate"></span>
+                <span class="rate-title"></span>
+            </div>
+
+        </div>
+
+        <div id="DataMasterPanelTitle" class="panel panel-title">DataMaster</div>
+        <div id="DataMasterPanel" class="panel">
+            <a href="http://www.datamasterusa.com" target="_blank" class="ad-well">
+                <div class="datamaster-header">Download a FREE</div>
+                <div class="datamaster-14-day">14 Day Trial</div>
+                <div class="ad-image"></div>
+            </a>
+            <p>
+                DataMaster has over a decade of experience providing real estate appraisers with time and money saving tools.  Our real estate appraisal software will help you complete all your appraisal forms quickly, easily and accurately.
+            </p>
+            <a href="http://www.DataMasterUsa.com" target="_blank" class="btn btn-default btn-green">Learn More ></a>
+        </div>
+
+        <div id="MiscPanel" class="panel fill-cell"></div>
 
 
-@{ Html.RenderAction("_Appraisers", "Home"); }
+    </div>
 
+</div>
+
+
+@section htmlhead {
+    <link href="@Url.Content("~/Content/css/Index.css")" rel="stylesheet" type="text/css" />
+}
+@section PageScripts {
+    <script src="@Url.Content("~/Scripts/Common/Rates.js")"></script>
+}
 
 
 

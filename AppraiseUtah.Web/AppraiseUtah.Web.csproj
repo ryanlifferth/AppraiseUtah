@@ -141,12 +141,15 @@
     <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\images\help02.png" />
+    <Content Include="Images\data-master-box.png" />
+    <Content Include="Images\help02.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\Lib\jquery-2.0.3.intellisense.js" />
+    <Content Include="Images\Home\House01.png" />
+    <Content Include="Images\Logo.png" />
     <Content Include="Scripts\Common\Appraisers.js" />
     <Content Include="Scripts\Common\OrderAppraisal.js" />
     <Content Include="Scripts\Common\Rates.js" />
@@ -180,7 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\Home\" />
     <Folder Include="Views\Appraisal\PartialViews\" />
   </ItemGroup>
   <ItemGroup>

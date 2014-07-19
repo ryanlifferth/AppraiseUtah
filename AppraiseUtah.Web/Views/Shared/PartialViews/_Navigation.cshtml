@@ -26,10 +26,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                @BuildLink("Home", "Index", @"<span class=""glyphicon glyphicon-home""></span>")
-                @BuildLink("Appraisal", "Index", "Order")
-                @BuildLink("Appraiser", "Index", "App")
-                <li><a href="#">Link</a></li>
+                <li class="nav-logo">
+                    <a href="@Url.Action("Index", "Home")" class="logo"><span>appraise utah</span></a>
+                </li>
+                @*@BuildLink("Home", "Index", @"<span class=""glyphicon glyphicon-home""></span>")*@
+                @BuildLink("Appraisal", "Index", "Order", "New Appraisal")
+                @BuildLink("Appraiser", "Index", "Find", "Area Appraisers")
+                @BuildLink("Home", "Index2", "Another", "Link")
             </ul>
         </div>
     </div>
@@ -58,6 +61,11 @@
         <a href="@Url.Action(action, controller)">@Html.Raw(text)</a>
     </li>
 
+}
+
+@helper BuildLink(string controller, string action, string mainText, string subText)
+{
+    @BuildLink(controller, action, @"<span class=""text"">" + mainText + @"</span><span class=""sub-text"">" + subText + "</span>");
 }
 
 
