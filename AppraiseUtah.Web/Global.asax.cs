@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using AppraiseUtah.Web.Common;
+using System.Web.Optimization;
+
 
 namespace AppraiseUtah.Web
 {
@@ -21,6 +23,8 @@ namespace AppraiseUtah.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             ViewEngines.Engines.Add(new MyRazorViewEngine());
+
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

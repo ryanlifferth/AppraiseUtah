@@ -4,10 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@*AppraiseUtah.com*@ @(!String.IsNullOrEmpty(ViewBag.Title) ? " - " + ViewBag.Title : String.Empty)</title>
-    <link href="@Url.Content("~/Content/bootstrap/bootstrap.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/css/Site.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/css/main")
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:100,300,400|Open+Sans:300,400">
     @RenderSection("htmlhead", required: false)
+
+    @*@Scripts.Render("~/js/modernizr")*@
+
 </head>
 <body>
     <div id="pageContainer">
@@ -31,8 +33,10 @@
         </div>
     </footer>
 
-    <script src="@Url.Content("~/Scripts/Lib/jquery-2.0.3.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/Lib/bootstrap.min.js")"></script>
+    @Scripts.Render("~/js/jquery")
+    @Scripts.Render("~/js/lib")
+
+    @Scripts.Render("~/js/main")
 
     @RenderSection("PageScripts", false)
 </body>

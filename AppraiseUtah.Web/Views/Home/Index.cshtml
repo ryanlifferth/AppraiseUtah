@@ -60,10 +60,10 @@
 
 
 @section htmlhead {
-    <link href="@Url.Content("~/Content/css/Index.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/css/home")
 }
 @section PageScripts {
-    <script src="@Url.Content("~/Scripts/Common/Rates.js")"></script>
+    @Scripts.Render("~/js/rates")
 }
 
 

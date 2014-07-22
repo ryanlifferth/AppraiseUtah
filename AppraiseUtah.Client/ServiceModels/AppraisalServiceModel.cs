@@ -71,7 +71,7 @@ namespace AppraiseUtah.Client.ServiceModels
             SqlParameter newAppraisalIdParam = new SqlParameter("newAppraisalOrderId", SqlDbType.Int);
             newAppraisalIdParam.Direction = ParameterDirection.Output;
 
-            var orderResult = _db.Database.ExecuteSqlCommand("CreateAppraisalOrder " +
+            var orderResult = _db.Database.ExecuteSqlCommand("exec CreateAppraisalOrder " +
                                                                 "@clientFirstName," +
                                                                 "@clientLastName," +
                                                                 "@clientCompanyName," +
