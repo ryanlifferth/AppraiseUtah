@@ -35,6 +35,8 @@ namespace AppraiseUtah.Web
                 "~/Content/bootstrap/bootstrap.css",
                 "~/Content/css/Site.css"));
 
+            bundles.Add(new StyleBundle("~/css/social").Include("~/Content/bootstrap/font-awesome.css"));
+
             bundles.Add(new StyleBundle("~/css/order").Include("~/Content/css/OrderAppraisal.css"));
 
 

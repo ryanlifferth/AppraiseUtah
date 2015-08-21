@@ -1,10 +1,16 @@
 ﻿
 <div class="registration-header">
     <div class="container">
+        <span class="services">Residential & Commercial Services</span>
         <div class="account-links pull-right">
-            <a href="#">Register</a>
+            @*<a href="#">Register</a>
             <span class="seprator">|</span>
-            <a href="#">Log In</a>
+            <a href="#">Log In</a>*@
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="https://www.linkedin.com/company/lifferth-appraisal-company" target="_blank" class="fa fa-linkedin"></a>
+            <a href="tel:+1-801-547-9700" class="fa fa-phone"></a>
+            <a href="mailto:info@appraiseutah.com" class="fa fa-envelope-o"></a>
+
         </div>
     </div>
 </div>
@@ -30,9 +36,10 @@
                     <a href="@Url.Action("Index", "Home")" class="logo"><span>appraise utah</span></a>
                 </li>
                 @*@BuildLink("Home", "Index", @"<span class=""glyphicon glyphicon-home""></span>")*@
+                @BuildLink("Home", "services-and-fees", "Fees", "and services")
+                @BuildLink("Home", "service-area", "Area", "served")
                 @BuildLink("Appraisal", "Index", "Order", "New Appraisal")
-                @BuildLink("Appraiser", "Index", "Find", "Area Appraisers")
-                @BuildLink("Home", "Index2", "Another", "Link")
+                @BuildLink("Home", "about-us", "About", "our company")
             </ul>
         </div>
     </div>

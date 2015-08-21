@@ -1,0 +1,10 @@
+﻿@{
+    //bool isHomePage = (bool)ViewData["IsHomePage"];
+    string homeStyle = (bool)ViewData["IsHomePage"] ? "white-text" : "";
+}
+
+<div class="address pull-right @homeStyle">
+    325 e gordon ave, Layton, UT 84041 -
+    <a href="tel:+1-801-547-9700">801.547.9700</a> -
+    <a href="mailto:info@appraiseutah.com">info@appraiseutah.com</a>
+</div>

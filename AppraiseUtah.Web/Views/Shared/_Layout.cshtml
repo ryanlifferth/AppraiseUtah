@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@*AppraiseUtah.com*@ @(!String.IsNullOrEmpty(ViewBag.Title) ? " - " + ViewBag.Title : String.Empty)</title>
     @Styles.Render("~/css/main")
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:100,300,400|Open+Sans:300,400">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:100,300,400|Open+Sans:300,400|Lora:400,400italic,700,700italic">
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">*@
+    @Styles.Render("~/css/social")
     @RenderSection("htmlhead", required: false)
 
     @*@Scripts.Render("~/js/modernizr")*@
@@ -16,6 +18,14 @@
         @{Html.RenderPartial("_Navigation");}
 
         <div id="body" class="container">
+            @{
+                var currentController = ViewContext.RouteData.Values["Controller"].ToString();
+                var currentAction = ViewContext.RouteData.Values["Action"].ToString();
+                bool isHomePage = string.Equals(currentController, "Home", StringComparison.OrdinalIgnoreCase) && string.Equals(currentAction, "Index", StringComparison.OrdinalIgnoreCase) ? true : false;
+
+                Html.RenderPartial("_Address", new ViewDataDictionary { { "IsHomePage", isHomePage }});
+            }
+
             @RenderBody()
         </div>
 
@@ -23,8 +33,8 @@
     <footer id="footer">
         <div class="footer-banner">
             <div class="container footer-text">
-                We would love to hear from you
-                <a class="btn btn-default btn-green" href="#">Feedback</a>
+                <span class="serving">Serving Northern Utah Since 1975</span>
+                <a class="btn btn-default btn-green" href="#">About Us ></a>
             </div>
         </div>
 

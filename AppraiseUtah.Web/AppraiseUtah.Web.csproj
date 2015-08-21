@@ -145,28 +145,42 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\Staff.xml" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\css\Index.css" />
     <Content Include="Content\css\OrderAppraisal.css" />
     <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\Site.css" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\font-awesome.css" />
+    <Content Include="Content\bootstrap\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\data-master-box.png" />
     <Content Include="Images\help02.png" />
     <Content Include="Global.asax" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.css.map" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\appraiseutah.pubxml" />
     <None Include="Scripts\Lib\jquery-2.0.3.intellisense.js" />
     <Content Include="Images\Home\House01.png" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Scripts\Lib\bootstrap.js" />
+    <Content Include="Scripts\Lib\bootstrap.min.js" />
     <Content Include="Scripts\Common\Appraisers.js" />
     <Content Include="Scripts\Common\OrderAppraisal.js" />
     <Content Include="Scripts\Common\Rates.js" />
-    <Content Include="Scripts\Lib\bootstrap.js" />
-    <Content Include="Scripts\Lib\bootstrap.min.js" />
     <Content Include="Scripts\Lib\jquery-2.0.3.js" />
     <Content Include="Scripts\Lib\jquery-2.0.3.min.js" />
     <None Include="Scripts\Lib\jquery.validate-vsdoc.js" />
@@ -194,9 +208,13 @@
     <Content Include="Views\Appraiser\PartialViews\_AppraiserDropdown.cshtml" />
     <Content Include="Views\Appraisal\Confirmation.cshtml" />
     <Content Include="Views\Appraisal\Test.cshtml" />
+    <Content Include="Views\Home\Service-Area.cshtml" />
+    <Content Include="Views\Home\Services-And-Fees.cshtml" />
+    <Content Include="Views\Home\About-Us.cshtml" />
+    <Content Include="Views\Home\Staff.cshtml" />
+    <Content Include="Views\Shared\PartialViews\_Address.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Appraisal\PartialViews\" />
   </ItemGroup>
   <ItemGroup>

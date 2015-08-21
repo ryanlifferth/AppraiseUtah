@@ -11,7 +11,7 @@
 {
     Html.AntiForgeryToken();
 
-    <h4>1.  Select an appraiser/appraisal company</h4>
+    @*<h4>1.  Select an appraiser/appraisal company</h4>
     <div class="well well-sm form-group">
         <div class="group-label">
             @Html.LabelFor(m => m.Appraisal.AppraiserId)
@@ -21,9 +21,9 @@
             @Html.ValidationMessageFor(m => m.Appraisal.AppraiserId)
             @Html.HiddenFor(m => m.Appraisal.AppraiserId, new { data_item = "AppraiserId", @class = "validate" })
         </div>
-    </div>
+    </div>*@
 
-    <h4>2.  Tell us about yourself</h4>
+    <h4>1.  Tell us about yourself</h4>
     <div class="well well-sm">
         <div class="form-group">
             @Html.LabelFor(m => m.Appraisal.ClientPerson.CompanyName, new { @class = "" })
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <h4>3.  Tell us about the property</h4>
+    <h4>2.  Tell us about the property</h4>
     <div class="well well-sm">
         <div class="form-group">
             <div class="group-label">
@@ -131,7 +131,7 @@
         </div>
     </div>
 
-    <h4>4.  Tell us about the appraisal report</h4>
+    <h4>3.  Tell us about the appraisal report</h4>
     <div class="well well-sm bottom-well">
         <div class="form-group">
             @Html.Label("Are you the client?")
