@@ -90,6 +90,7 @@
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
       <Private>True</Private>
@@ -101,9 +102,11 @@
     </Reference>
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -172,10 +175,24 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Images\Home\Logo.png" />
+    <Content Include="Images\Home\Logo2.png" />
+    <Content Include="Images\RickLifferth.png" />
+    <Content Include="Images\RickLifferthSmall.png" />
+    <Content Include="Images\StaffImage.psd" />
+    <Content Include="Images\StaffImageLarge.psd" />
+    <Content Include="Images\StaffImageSmall.psd" />
+    <Content Include="Images\Home\Logo2.psd" />
+    <Content Include="Images\Home\LogoSource.psd" />
+    <None Include="Properties\PublishProfiles\appraiseutah-local.pubxml" />
     <None Include="Properties\PublishProfiles\appraiseutah.pubxml" />
     <None Include="Scripts\Lib\jquery-2.0.3.intellisense.js" />
     <Content Include="Images\Home\House01.png" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Images\StaffImage.png" />
+    <Content Include="Images\StaffImageLarge.png" />
+    <Content Include="Images\StaffImageSmall.png" />
+    <Content Include="Images\StateMap.png" />
     <Content Include="Scripts\Lib\bootstrap.js" />
     <Content Include="Scripts\Lib\bootstrap.min.js" />
     <Content Include="Scripts\Common\Appraisers.js" />

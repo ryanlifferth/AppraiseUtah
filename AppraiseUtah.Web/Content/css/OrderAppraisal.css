@@ -13,29 +13,36 @@
     width: 200px;
 }
 
+#OrderAppraisal .checkbox label {
+    min-width: 400px;
+    padding-left: 0;
+    text-align: left;
+    width: 400px;
+}
+
 #OrderAppraisal .form-group {
     margin-bottom: 5px;
     position: relative;
 }
 
-#OrderAppraisal .form-group.last-form-group {
-    margin-bottom: 0;
-}
+    #OrderAppraisal .form-group.last-form-group {
+        margin-bottom: 0;
+    }
 
-#OrderAppraisal .form-group .group-label {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    padding-top: 3px;
-    vertical-align: top;
-    width: 200px;
-}
+    #OrderAppraisal .form-group .group-label {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        padding-top: 3px;
+        vertical-align: top;
+        width: 200px;
+    }
 
-#OrderAppraisal .form-group .group-input {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-}
+    #OrderAppraisal .form-group .group-input {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+    }
 
 #OrderAppraisal .input-group {
     display: inline-table;
@@ -83,7 +90,7 @@
     display: inline-block;
     height: 16px;
     margin-left: 12px;
-    position:absolute;
+    position: absolute;
     top: 3px;
     width: 16px;
 }
@@ -92,9 +99,9 @@ select.blank-first-child option {
     color: #333;
 }
 
-select.blank-first-child option:first-child, select.select-placeholder {
-    color: #a9a9a9;
-}
+    select.blank-first-child option:first-child, select.select-placeholder {
+        color: #a9a9a9;
+    }
 
 #OrderAppraisal .default-input-value {
     border: 1px solid #abadb3;
@@ -139,92 +146,92 @@ select.blank-first-child option:first-child, select.select-placeholder {
     padding: 0 10px;
 }
 
-#ConfirmationInfo > legend {
-    border: none;
-    font-size: 18px;
-    margin-bottom: 5px;
-    margin-left: 15px;
-    padding: 0 4px 4px 4px;
-    width: auto;
-}
+    #ConfirmationInfo > legend {
+        border: none;
+        font-size: 18px;
+        margin-bottom: 5px;
+        margin-left: 15px;
+        padding: 0 4px 4px 4px;
+        width: auto;
+    }
 
-#ConfirmationInfo .confirmation-section {
-    font-size: 13px;
-    margin: 0 0 8px 0;
-    overflow: auto;
-    padding: 5px 0;
-}
+    #ConfirmationInfo .confirmation-section {
+        font-size: 13px;
+        margin: 0 0 8px 0;
+        overflow: auto;
+        padding: 5px 0;
+    }
 
-#ConfirmationInfo .confirmation-section .section-label {
-    color: #19aacf;
-    font-weight: bold;
-    vertical-align: top;
-}
+        #ConfirmationInfo .confirmation-section .section-label {
+            color: #19aacf;
+            font-weight: bold;
+            vertical-align: top;
+        }
 
-#ConfirmationInfo .confirmation-section.bottom {
-    margin-top: 0;
-}
+        #ConfirmationInfo .confirmation-section.bottom {
+            margin-top: 0;
+        }
 
-#ConfirmationInfo .confirmation-section .name {
-    font-size: 16px;
-}
+        #ConfirmationInfo .confirmation-section .name {
+            font-size: 16px;
+        }
 
-#ConfirmationInfo .confirmation-section address {
-    margin-bottom: 0;
-    width: 200px;
-}
+        #ConfirmationInfo .confirmation-section address {
+            margin-bottom: 0;
+            width: 200px;
+        }
 
-#ConfirmationInfo .confirmation-section .section-data-col-2, 
-#ConfirmationInfo .confirmation-section .section-data-col-1 {
-    float: left;
-}
+        #ConfirmationInfo .confirmation-section .section-data-col-2,
+        #ConfirmationInfo .confirmation-section .section-data-col-1 {
+            float: left;
+        }
 
-#ConfirmationInfo .contact-for-access {
-    clear: both;
-    margin-top: 4px;
-}
+    #ConfirmationInfo .contact-for-access {
+        clear: both;
+        margin-top: 4px;
+    }
 
-#ConfirmationInfo .occupant-label {
-    color: #707070;
-    font-style: italic;
-    float: left;
-    margin-right: 10px;
-    vertical-align: top;
-}
+    #ConfirmationInfo .occupant-label {
+        color: #707070;
+        font-style: italic;
+        float: left;
+        margin-right: 10px;
+        vertical-align: top;
+    }
 
-#ConfirmationInfo .occupant-label span, #ConfirmationInfo .sub-label {
-    border-bottom: 1px dotted #999;
-}
+        #ConfirmationInfo .occupant-label span, #ConfirmationInfo .sub-label {
+            border-bottom: 1px dotted #999;
+        }
 
-#ConfirmationInfo #orderClient {
-    margin-bottom: 10px;
-    overflow: auto;
-}
+    #ConfirmationInfo #orderClient {
+        margin-bottom: 10px;
+        overflow: auto;
+    }
 
-#ConfirmationInfo #orderClient .sub-label {
-    border-bottom: 1px dotted #999;
-    color: #707070;
-    font-size: 13px;
-    font-style: italic;
-    margin-left: 15px;
-}
+        #ConfirmationInfo #orderClient .sub-label {
+            border-bottom: 1px dotted #999;
+            color: #707070;
+            font-size: 13px;
+            font-style: italic;
+            margin-left: 15px;
+        }
 
-#ConfirmationInfo .occupant-data {
-    float: left;
-}
+    #ConfirmationInfo .occupant-data {
+        float: left;
+    }
 
-#ConfirmationInfo .confirmation-section .sales-info {
-    clear: both;
-    margin-top: 4px;
-}
+    #ConfirmationInfo .confirmation-section .sales-info {
+        clear: both;
+        margin-top: 4px;
+    }
 
-#ConfirmationInfo .confirmation-section .sales-info .legal-description {
-    font-size: 12px;
-}
+        #ConfirmationInfo .confirmation-section .sales-info .legal-description {
+            font-size: 12px;
+        }
 
-#ConfirmationInfo .confirmation-section .sales-info .legal-description strong {
-    font-size: 13px;
-}
+            #ConfirmationInfo .confirmation-section .sales-info .legal-description strong {
+                font-size: 13px;
+            }
 
 #ConfirmationFooter {
     font-size: 12px;
