@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@*AppraiseUtah.com*@ @(!String.IsNullOrEmpty(ViewBag.Title) ? " - " + ViewBag.Title : String.Empty)</title>
+    <title>AppraiseUtah.com @(!String.IsNullOrEmpty(ViewBag.Title) ? " - " + ViewBag.Title : String.Empty)</title>
     @Styles.Render("~/css/main")
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:100,300,400|Open+Sans:300,400|Lora:400,400italic,700,700italic">
     @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">*@
@@ -34,7 +34,7 @@
         <div class="footer-banner">
             <div class="container footer-text">
                 <span class="serving">Serving Northern Utah Since 1975</span>
-                <a class="btn btn-default btn-green" href="#">About Us ></a>
+                @Html.ActionLink("About Us", "about-us", "Home", null, new { @class = "btn btn-default btn-green" })
             </div>
         </div>
 

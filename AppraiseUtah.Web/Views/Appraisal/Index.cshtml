@@ -2,10 +2,12 @@
 @using AppraiseUtah.Client.Utilities;
 @model AppraisalViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Order An Appraisal";
     Layout = "~/Views/Shared/_Layout.cshtml";
     //var stateList = ViewData["StateList"];
 }
+
+<h2>Order an Appraisal</h2>
 
 @using (Html.BeginForm("Index", "Appraisal", FormMethod.Post, new { id = "OrderAppraisal" }))
 {
