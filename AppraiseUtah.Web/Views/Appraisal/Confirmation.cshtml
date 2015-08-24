@@ -76,7 +76,7 @@
                     @youAddress.City, @youAddress.StateCode  @youAddress.PostalCode
                 </address>
                 <div class="section-data-col-2">
-                    <abbr title="phone">P:</abbr> @you.Phone<br />
+                    <abbr title="phone">P:</abbr> @String.Format("{0:(###) ###-####}", you.Phone)<br />
                     <a href="mailto:@you.Email" class="email">@you.Email</a>
                 </div>
             }
@@ -119,7 +119,7 @@
                                  {
                                     <br />
                                  }
-                                <abbr title="phone">P:</abbr> @occupant.Phone
+                                <abbr title="phone">P:</abbr> @String.Format("{0:(###) ###-####}", occupant.Phone)
                                  dataPresent = true;
                              }
 
@@ -190,7 +190,7 @@
                         @orderClientAddress.City, @orderClientAddress.StateCode  @orderClientAddress.PostalCode
                     </address>
                     <div class="section-data-col-2">
-                        <abbr title="phone">P:</abbr> @orderClient.Phone<br />
+                        <abbr title="phone">P:</abbr> @String.Format("{0:(###) ###-####}", orderClient.Phone)<br />
                         @if (!string.IsNullOrEmpty(orderClient.Email))
                         {
                             <a href="mailto:@orderClient.Email" class="email">@orderClient.Email</a>
@@ -264,7 +264,7 @@
     {
         var contact = "";
 
-        contact = (!string.IsNullOrEmpty(appraiser.Phone)) ? @"<abbr title=""Phone"">P:</abbr>" + appraiser.Phone : "";
+        contact = (!string.IsNullOrEmpty(appraiser.Phone)) ? @"<abbr title=""Phone"">P:</abbr>" + String.Format("{0:(###) ###-####}", appraiser.Phone) : "";
 
         if (contact != "")
         {

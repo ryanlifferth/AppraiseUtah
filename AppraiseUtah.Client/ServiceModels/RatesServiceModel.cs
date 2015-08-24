@@ -31,6 +31,8 @@ namespace AppraiseUtah.Client.ServiceModels
 
             try
             {
+                // TODO:  Add rates to cache (24 hour cache)
+
                 String uri = String.Format("http://www.zillow.com/webservice/GetRateSummary.htm?zws-id={0}&state={1}", _zwsid, state);
 
                 // Make the HTTP request / get the response

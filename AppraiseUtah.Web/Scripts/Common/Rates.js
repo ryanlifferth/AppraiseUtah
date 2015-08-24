@@ -14,6 +14,10 @@ $(document).ready(
 
         $.getJSON("api/rates/UT")
             .done(function (data) {
+                $("#RatePanel #Loader").hide();
+                $("#RatePanel .rate-container").show();
+                $("#RatePanel .powered-by-zillow").show();
+
                 //alert(data.Today.ThirtyYearFixed);
                 $("#Thirty .rate-title").html("30 year");
                 $("#Thirty .rate").html(parseFloat(Math.round(data.Today.ThirtyYearFixed * 100) / 100).toFixed(2) + '%');

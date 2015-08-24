@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AppraiseUtah.Client.ViewModels;
 using System.Net.Mail;
+using AppraiseUtah.Client.Models;
 
 namespace AppraiseUtah.Client.Utilities
 {
@@ -49,6 +50,7 @@ namespace AppraiseUtah.Client.Utilities
             message.Body = BuildConfirmationBody(appraisal, true);
 
             SmtpClient smtpClient = new SmtpClient();
+            smtpClient.EnableSsl = true;
             smtpClient.Send(message);
         }
 
@@ -161,7 +163,7 @@ namespace AppraiseUtah.Client.Utilities
             body.Append(appraisal.Appraisal.ClientAddress.PostalCode);
             body.Append(@"</address>");
             body.Append(@"<div style=""float:left"">");
-            body.Append(@"<abbr title=""phone"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">P:</abbr>" + appraisal.Appraisal.ClientPerson.Phone + "<br />");
+            body.Append(@"<abbr title=""phone"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">P:</abbr>" + String.Format("{0:(###) ###-####}", appraisal.Appraisal.ClientPerson.Phone) + "<br />");
             body.Append(@"<a href=""mailto:" + appraisal.Appraisal.ClientPerson.Email + @""" class=""email"" style=""color:#428bca;text-decoration:none"">" + appraisal.Appraisal.ClientPerson.Email + "</a>");
             body.Append(@"</div>");
             body.Append(@"</div>");
@@ -202,7 +204,7 @@ namespace AppraiseUtah.Client.Utilities
                     {
                         body.Append(@"<br />");
                     }
-                    body.Append(@"<abbr title=""phone"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">P:</abbr>").Append(occupant.Phone);
+                    body.Append(@"<abbr title=""phone"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">P:</abbr>").Append(String.Format("{0:(###) ###-####}", occupant.Phone));
                     dataPresent = true;
                 }
 
@@ -254,7 +256,7 @@ namespace AppraiseUtah.Client.Utilities
             body.Append(@"<div style=""color:#19aacf;float:left;font-weight:700;vertical-align:top;width:150px"">Appraisal Report</div>");
             body.Append(@"<div style=""float:left"">");
 
-            if (appraisal.Appraisal.Client2Person != null)
+            if (appraisal.Appraisal.Client2Person != null && IsPersonDataPresent(appraisal.Appraisal.Client2Person))
             {
                 var orderClient = appraisal.Appraisal.Client2Person;
                 var orderClientAddress = appraisal.Appraisal.Client2Address;
@@ -273,7 +275,7 @@ namespace AppraiseUtah.Client.Utilities
                 body.Append(orderClientAddress.City).Append(", ").Append(orderClientAddress.StateCode).Append("  ").Append(orderClientAddress.PostalCode);
                 body.Append(@"</address>");
                 body.Append(@"<div style=""float: left;"">");
-                body.Append(@"<abbr title=""phone"" style=""border-bottom: 1px dotted #999999;margin-right: 6px;"">P:</abbr>").Append(orderClient.Phone).Append("<br />");
+                body.Append(@"<abbr title=""phone"" style=""border-bottom: 1px dotted #999999;margin-right: 6px;"">P:</abbr>").Append(String.Format("{0:(###) ###-####}", orderClient.Phone)).Append("<br />");
                 if (!string.IsNullOrEmpty(orderClient.Email))
                 {
                     body.Append(@"<a style=""color: #2a6496;text-decoration: underline;"" href=""mailto:").Append(orderClient.Email).Append(@""" class=""email"">").Append(orderClient.Email).Append("</a>");
@@ -343,7 +345,7 @@ namespace AppraiseUtah.Client.Utilities
         {
             var contact = "";
 
-            contact = (!string.IsNullOrEmpty(appraiser.Phone)) ? @"<abbr title=""Phone"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">P:</abbr>" + appraiser.Phone : "";
+            contact = (!string.IsNullOrEmpty(appraiser.Phone)) ? @"<abbr title=""Phone"" style=""cursor:help;border-bottom:1px dotted #999;margin-right:6px;"">P:</abbr>" + String.Format("{0:(###) ###-####}", appraiser.Phone) : "";
 
             if (contact != "")
             {
@@ -397,6 +399,27 @@ namespace AppraiseUtah.Client.Utilities
             var msg = new StringBuilder("This is the only communication you will receive from AppraiseUtah.com.  As the appraiser, you should reach out to the client to arrange all appraisal details, including payment.  AppraiseUtah.com is not responsible for the appraisal in any way.");
 
             return msg.ToString();
+        }
+
+        private static bool IsPersonDataPresent(Person person)
+        {
+            if (person == null)
+            {
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(person.CompanyName) &&
+                string.IsNullOrEmpty(person.Email) &&
+                string.IsNullOrEmpty(person.FirstName) &&
+                string.IsNullOrEmpty(person.LastName) &&
+                string.IsNullOrEmpty(person.PersonType) &&
+                string.IsNullOrEmpty(person.Phone) &&
+                person.PersonId == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         #endregion

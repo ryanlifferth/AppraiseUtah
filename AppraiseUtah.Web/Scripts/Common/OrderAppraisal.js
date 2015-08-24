@@ -107,10 +107,12 @@ $(document).ready(
         $(document).keydown(function (e) {
             if (e.keyCode == 73 && e.ctrlKey) {
 
+                // CTRL+I to autofill
                 //http://css-tricks.com/snippets/javascript/javascript-keycodes/
                 
-                //appraiserId:4
-                //Appraisal.AppraiserId:4
+                //appraiserId:28
+                //Appraisal.AppraiserId:28
+                $("#Appraisal_AppraiserId").val("28");
                 $("#Appraisal_ClientPerson_CompanyName").val("Ryan's Loan service");
                 $("#Appraisal_ClientPerson_FirstName").val("Ryan");
                 $("#Appraisal_ClientPerson_LastName").val("Loaner");
