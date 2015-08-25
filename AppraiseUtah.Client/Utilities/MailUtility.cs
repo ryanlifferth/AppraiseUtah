@@ -40,13 +40,13 @@ namespace AppraiseUtah.Client.Utilities
 
             //message.From = new MailAddress("WebOrders@appraiseutah.com", "Web Order");
             //message.To.Add(new MailAddress("orders@appraiseutah.com"));
-            message.From = new MailAddress("ryan@lifferth.com", "AppraiseUtah.com");
+            message.From = new MailAddress("orders@appraiseutah.com", "AppraiseUtah.com");
             message.To.Add(new MailAddress(appraisal.Appraisal.ClientPerson.Email));
-            message.CC.Add(new MailAddress("orders@appraiseutah.com"));
+            //message.CC.Add(new MailAddress("admin@appraiseutah.com"));
 
             message.IsBodyHtml = true;
             message.BodyEncoding = Encoding.UTF8;
-            message.Subject = "AppraisalUtah.com Order Confirmation - ID: " + appraisal.Appraisal.Id;
+            message.Subject = "AppraisalUtah.com Order Confirmation - ID: " + appraisal.Appraisal.Id + " - **DO NOT REPLY**";
             message.Body = BuildConfirmationBody(appraisal, true);
 
             SmtpClient smtpClient = new SmtpClient();
@@ -65,9 +65,9 @@ namespace AppraiseUtah.Client.Utilities
 
             //message.From = new MailAddress("WebOrders@appraiseutah.com", "Web Order");
             //message.To.Add(new MailAddress("orders@appraiseutah.com"));
-            message.From = new MailAddress("ryan@lifferth.com", "AppraiseUtah.com");
+            message.From = new MailAddress("orders@appraiseutah.com", "AppraiseUtah.com");
             message.To.Add(new MailAddress(appraiser.Email));
-            message.CC.Add(new MailAddress("orders@appraiseutah.com"));
+            //message.CC.Add(new MailAddress("admin@appraiseutah.com"));
 
             message.IsBodyHtml = true;
             message.BodyEncoding = Encoding.UTF8;
@@ -98,7 +98,8 @@ namespace AppraiseUtah.Client.Utilities
             if (clientConfirmation)
             {
                 body.Append(@"<h2 style=""line-height:1.1;font-size:32px;margin-top:21px;margin-bottom:5px;color:#6abe59;font-weight:normal"">Thank you for your order at <em>AppraiseUtah.com</em></h2>");
-                body.Append(@"<h4 style=""line-height:1.1;font-size:24px;margin-top:0;margin-bottom:10.5px;color:#6abe59;font-weight:normal"">Your appraisal order number is:  <strong style=""margin:0 5px"">" + appraisal.Appraisal.Id + "</strong></h4>");
+                body.Append(@"<h4 style=""line-height:1.1;font-size:24px;margin-top:0;margin-bottom:5px;color:#6abe59;font-weight:normal"">Your appraisal order number is:  <strong style=""margin:0 5px"">" + appraisal.Appraisal.Id + "</strong></h4>");
+                //body.Append(@"<h6 style=""lineheight:1.0;font-size:16px;margin-top:0;margin-bottom:10.5px;color:#333;font-weight:normal"">Do not reply to this e-mail</h6>");
             }
             else
             {
@@ -389,7 +390,7 @@ namespace AppraiseUtah.Client.Utilities
 
         private static string BuildUserDisclaimer()
         {
-            var msg = new StringBuilder("This is the only communication you will recieve from AppraiseUtah.com.  The Appraiser should contact you soon to arrange all appraisal details, including payment.  AppraiseUtah.com is not responsible for the appraisal in any way.");
+            var msg = new StringBuilder("Do not reply to this e-mail.  This is the only communication you will recieve from AppraiseUtah.com.  The Appraiser should contact you soon to arrange all appraisal details, including payment.  AppraiseUtah.com is not responsible for the appraisal in any way.");
 
             return msg.ToString();
         }
