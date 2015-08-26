@@ -122,7 +122,7 @@ namespace AppraiseUtah.Client.Utilities
             {
                 body.Append(appraiser.Address.Address2).Append("<br />");
             }
-            body.Append(appraiser.Address.City).Append(",");
+            body.Append(appraiser.Address.City).Append(", ");
             body.Append(appraiser.Address.StateCode).Append("  ");
             body.Append(appraiser.Address.PostalCode);
             body.Append(@"</address>");
@@ -159,7 +159,7 @@ namespace AppraiseUtah.Client.Utilities
             {
                 body.Append(appraisal.Appraisal.ClientAddress.Address2).Append("<br />");
             }
-            body.Append(appraisal.Appraisal.ClientAddress.City).Append(",");
+            body.Append(appraisal.Appraisal.ClientAddress.City).Append(", ");
             body.Append(appraisal.Appraisal.ClientAddress.StateCode).Append("  ");
             body.Append(appraisal.Appraisal.ClientAddress.PostalCode);
             body.Append(@"</address>");
