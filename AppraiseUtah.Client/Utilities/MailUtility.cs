@@ -5,6 +5,7 @@ using System.Text;
 using AppraiseUtah.Client.ViewModels;
 using System.Net.Mail;
 using AppraiseUtah.Client.Models;
+using System.Configuration;
 
 namespace AppraiseUtah.Client.Utilities
 {
@@ -12,6 +13,10 @@ namespace AppraiseUtah.Client.Utilities
     {
 
         #region Fields
+
+        private static string _orderFromEmailAddress = ConfigurationManager.AppSettings["OrdersFromEmailAddress"];
+        private static string _orderCCEmailAddress = string.IsNullOrEmpty(ConfigurationManager.AppSettings["OrdersCCEmailAddress"]) ? string.Empty : ConfigurationManager.AppSettings["OrdersCCEmailAddress"];
+
         #endregion
 
         #region Properties
@@ -38,11 +43,8 @@ namespace AppraiseUtah.Client.Utilities
                 throw new Exception("Client email is null or empty.  Cannot complete order");
             }
 
-            //message.From = new MailAddress("WebOrders@appraiseutah.com", "Web Order");
-            //message.To.Add(new MailAddress("orders@appraiseutah.com"));
-            message.From = new MailAddress("orders@appraiseutah.com", "AppraiseUtah.com");
+            message.From = new MailAddress(_orderFromEmailAddress, "AppraiseUtah.com");
             message.To.Add(new MailAddress(appraisal.Appraisal.ClientPerson.Email));
-            //message.CC.Add(new MailAddress("admin@appraiseutah.com"));
 
             message.IsBodyHtml = true;
             message.BodyEncoding = Encoding.UTF8;
@@ -63,12 +65,13 @@ namespace AppraiseUtah.Client.Utilities
                 throw new Exception("Appraiser email is null or empty.  Cannot complete order");
             }
 
-            //message.From = new MailAddress("WebOrders@appraiseutah.com", "Web Order");
-            //message.To.Add(new MailAddress("orders@appraiseutah.com"));
-            message.From = new MailAddress("orders@appraiseutah.com", "AppraiseUtah.com");
+            message.From = new MailAddress(_orderFromEmailAddress, "AppraiseUtah.com");
             message.To.Add(new MailAddress(appraiser.Email));
-            //message.CC.Add(new MailAddress("admin@appraiseutah.com"));
-
+            if (!string.IsNullOrEmpty(_orderCCEmailAddress))
+            {
+                message.CC.Add(new MailAddress(_orderCCEmailAddress));
+            }
+ 
             message.IsBodyHtml = true;
             message.BodyEncoding = Encoding.UTF8;
             message.Subject = "New appraisal order from AppraisalUtah.com - " + appraisal.Appraisal.PropertyAddress.Address1 + ", " + appraisal.Appraisal.PropertyAddress.City + " (ID: " + appraisal.Appraisal.Id + ")";

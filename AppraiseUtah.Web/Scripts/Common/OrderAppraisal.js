@@ -112,7 +112,7 @@ $(document).ready(
                 
                 //appraiserId:28
                 //Appraisal.AppraiserId:28
-                $("#Appraisal_AppraiserId").val("28");
+                $("#Appraisal_AppraiserId").val("1");
                 $("#Appraisal_ClientPerson_CompanyName").val("Ryan's Loan service");
                 $("#Appraisal_ClientPerson_FirstName").val("Ryan");
                 $("#Appraisal_ClientPerson_LastName").val("Loaner");
