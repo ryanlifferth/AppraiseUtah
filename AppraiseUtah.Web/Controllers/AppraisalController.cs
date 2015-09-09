@@ -21,7 +21,7 @@ namespace AppraiseUtah.Web.Controllers
 
 
         #region Index
-        
+
         //
         // GET: /Appraisal/
 
@@ -38,7 +38,7 @@ namespace AppraiseUtah.Web.Controllers
 
                 //TODO:  Format phone numbers
             }
-            
+
             return View(appraisalViewModel);
         }
 
@@ -67,7 +67,7 @@ namespace AppraiseUtah.Web.Controllers
             appraisalViewModel.Appraisal.ClientAddress.City = "SLC";
             appraisalViewModel.Appraisal.ClientAddress.PostalCode = "12345";
             appraisalViewModel.Appraisal.ClientAddress.StateCode = "UT";*/
-            
+
 
             appraisalViewModel.Appraisal.ClientPerson.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.ClientPerson.Phone);
             appraisalViewModel.Appraisal.OccupantPerson.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.OccupantPerson.Phone);
@@ -110,6 +110,22 @@ namespace AppraiseUtah.Web.Controllers
         }
 
         #endregion Confirmation
+
+        #region All Appraisal Orders
+
+        // GET: /Appraisal/AllOrders
+        //      The stored procedure (dbo.GetAppraisals) only returns the most recent 100 appraisals
+        [HttpGet]
+        public ActionResult AllOrders()
+        {
+            var appraisalsViewModel = new AppraisalsViewModel();
+
+            appraisalsViewModel.Appraisals = _appraisalServiceModel.Get_Appraisals();
+
+            return View(appraisalsViewModel);
+        }
+
+        #endregion
 
 
         #region Test

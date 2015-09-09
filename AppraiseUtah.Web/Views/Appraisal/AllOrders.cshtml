@@ -1,0 +1,15 @@
+﻿@model AppraiseUtah.Client.ViewModels.AppraisalsViewModel
+
+@{
+    ViewBag.Title = "AllOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Appraisal Orders</h2>
+
+@{
+    foreach (var appraisal in Model.Appraisals)
+    {
+        <div>@appraisal.Id</div>
+    }
+}

@@ -116,6 +116,23 @@ namespace AppraiseUtah.Client.Models
             return appraisal;
         }
 
+        public virtual List<Appraisal> GetAppraisals()
+        {
+            // Get the data from the database
+            var dataTable = GetDataFromStoredProc("GetAppraisals", null);
+
+            var appraisals = new List<Appraisal>();
+
+            // Populate the appraisals object
+            if (dataTable.Rows.Count > 0)
+            {
+                appraisals = PopulateAppraisalsFromDataTable(dataTable);
+            }
+
+            
+            return appraisals;
+        }
+
         #endregion
 
         #region State Methods
@@ -287,6 +304,29 @@ namespace AppraiseUtah.Client.Models
             }
 
             return appraisal;
+        }
+
+        private List<Appraisal> PopulateAppraisalsFromDataTable(DataTable data)
+        {
+            // Populate the appraisals object with dat from the Appraisal table
+            var reader = data.CreateDataReader();
+            var appraisals = ((IObjectContextAdapter)this).ObjectContext.Translate<Appraisal>(reader, "Appraisals", MergeOption.AppendOnly).ToList();
+
+            // Hydrate the appraisals object
+            if (appraisals.Count > 0)
+            {
+                foreach (var appraisal in appraisals)
+                {
+                    appraisal.ClientPerson = PopulatePersonFromDataTable(data, "ClientPerson");         // Populate the Appraisal.ClientPerson object
+                    appraisal.ClientAddress = PopulateAddressFromDataTable(data, "ClientAddress");      // Populate the Appraisal.ClientAddress object
+                    appraisal.Client2Person = PopulatePersonFromDataTable(data, "Client2Person");         // Populate the Appraisal.ClientPerson object
+                    appraisal.Client2Address = PopulateAddressFromDataTable(data, "Client2Address");      // Populate the Appraisal.ClientAddress object
+                    appraisal.OccupantPerson = PopulatePersonFromDataTable(data, "OccupantPerson");     // Populate the Appraisal.OccupantPerson object
+                    appraisal.PropertyAddress = PopulateAddressFromDataTable(data, "PropertyAddress");  // Populate the Appraisal.PropertyAddress object
+                }
+            }
+
+            return appraisals;
         }
 
         /// <summary>

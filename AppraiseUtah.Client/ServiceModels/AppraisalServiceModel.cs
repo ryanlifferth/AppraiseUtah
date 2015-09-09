@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using AppraiseUtah.Client.Models;
 using AppraiseUtah.Client.ViewModels;
 
@@ -58,7 +55,17 @@ namespace AppraiseUtah.Client.ServiceModels
         {
             //var results = _db.Database.SqlQuery<Appraisal>("EXEC GetAppraisal {0}", id);
             var appraisal = _db.GetAppraisal(id);
-            return appraisal; ;
+            return appraisal;
+        }
+
+        /// <summary>
+        ///     Retrieves all appraisals 
+        ///     NOTE:  Stored proc only retrieves the most recent 100 orders
+        /// </summary>
+        /// <returns></returns>
+        public virtual List<Appraisal> Get_Appraisals()
+        {
+            return _db.GetAppraisals();
         }
 
         /// <summary>
@@ -111,6 +118,7 @@ namespace AppraiseUtah.Client.ServiceModels
                                                                 "@ContactForAccess," +
                                                                 "@LegalDescription," +
                                                                 "@Comments," +
+                                                                "@orderDate," +
                                                                 "@newAppraisalOrderId OUTPUT",
                     CreateParameter("clientFirstName", SqlDbType.VarChar, appraisalViewModel.Appraisal.ClientPerson.FirstName),
                     CreateParameter("clientLastName", SqlDbType.VarChar, appraisalViewModel.Appraisal.ClientPerson.LastName),
@@ -153,6 +161,7 @@ namespace AppraiseUtah.Client.ServiceModels
                     CreateParameter("contactForAccess", SqlDbType.Bit, appraisalViewModel.Appraisal.ContactForAccess),
                     CreateParameter("legalDescription", SqlDbType.VarChar, appraisalViewModel.Appraisal.LegalDescription),
                     CreateParameter("comments", SqlDbType.NText, appraisalViewModel.Appraisal.Comments),
+                    CreateParameter("orderDate", SqlDbType.DateTime, DateTime.UtcNow),
                     newAppraisalIdParam );
 
             var appraisalId = (int)newAppraisalIdParam.Value;

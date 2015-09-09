@@ -158,14 +158,14 @@ li.nav-logo::after {
     margin-left: 206px;
 }
 
-.navbar-nav > li {
-    border-right: 1px solid #027794;
-}
-
-    .navbar-nav > li > a {
-        padding-top: 9.5px;
-        padding-bottom: 7.5px;
+    .navbar-nav > li {
+        border-right: 1px solid #027794;
     }
+
+        .navbar-nav > li > a {
+            padding-top: 9.5px;
+            padding-bottom: 7.5px;
+        }
 
 .navbar-default .navbar-nav > li > a:hover {
     background-color: rgba(45,170,205,0.8);
@@ -488,7 +488,6 @@ h2.first-item {
     display: block;
     height: 40px;
     width: 150px;*/
-
     font-size: 9px;
     font-style: italic;
     color: rgba(235,235,235,0.8);
@@ -500,17 +499,17 @@ h2.first-item {
     text-align: center;
 }
 
-#Loader .fa {
-    color: rgba(235,235,235,0.9);
-    font-size: 20px;
-}
+    #Loader .fa {
+        color: rgba(235,235,235,0.9);
+        font-size: 20px;
+    }
 
-#Loader p {
-    color: rgba(235,235,235,0.8);
-    font-size: 10px;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
-    text-transform: lowercase;
-}
+    #Loader p {
+        color: rgba(235,235,235,0.8);
+        font-size: 10px;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+        text-transform: lowercase;
+    }
 
 
 
@@ -647,6 +646,7 @@ a.ad-well {
 /* Service Area */
 .content img {
     float: left;
+    padding: 0 0 20px 0;
 }
 
 #ServiceArea h6 {
@@ -688,10 +688,18 @@ a.ad-well {
 
 
 /* About Us View */
+
+.staff-welcome {
+    border-bottom: 1px dotted #ddd;
+    font-size: 17px;
+    margin: 10px 10px 20px 0;
+    padding: 0 0 20px 0;
+}
+
 .staff {
     border-bottom: 1px dotted #ddd;
-    margin: 10px 10px 20px 10px;
-    padding: 0 0 10px 0;
+    margin: 10px 10px 30px 10px;
+    padding: 0 0 15px 0;
     overflow: auto;
 }
 
@@ -715,9 +723,19 @@ a.ad-well {
     width: 75px;
 }
 
-.staff .staffPicture#RickLifferth {
-    background-image: url(../../Images/RickLifferthSmall.png);
-}
+    .staff .staffPicture#RickLifferth {
+        background-image: url(../../Images/RickLifferthSmall.png);
+    }
+
+    .staff .staffPicture#GentryLawson,
+    .staff .staffPicture#EricLarson {
+        display: none;
+    }
+
+        .staff .staffPicture#GentryLawson + .name,
+        .staff .staffPicture#EricLarson + .name {
+            margin-left: 15px;
+        }
 
 .staff .name,
 .staffPage .name {
@@ -771,9 +789,14 @@ a.ad-well {
         width: 150px;
     }
 
-    .staffPage .staffPicture#RickLifferth {
-        background-image: url(../../Images/RickLifferth.png);
-    }
+        .staffPage .staffPicture#RickLifferth {
+            background-image: url(../../Images/RickLifferth.png);
+        }
+
+        .staffPage .staffPicture#GentryLawson,
+        .staffPage .staffPicture#EricLarson {
+            display: none;
+        }
 
     .staffPage .name {
         font-size: 36px;

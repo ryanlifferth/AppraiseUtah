@@ -68,6 +68,11 @@ namespace AppraiseUtah.Client.Models
 
         public string Comments { get; set; }
 
+        /// <summary>
+        ///     Date is stored in UTC time
+        /// </summary>
+        public DateTime OrderDate { get; set; }
+
         #endregion
 
         #region Methods
