@@ -149,6 +149,7 @@
     <Compile Include="Controllers\AppraisalController.cs" />
     <Compile Include="Controllers\AppraiserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LifferthController.cs" />
     <Compile Include="Controllers\RatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -246,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Appraisal\PartialViews\" />
+    <Folder Include="Views\Lifferth\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
