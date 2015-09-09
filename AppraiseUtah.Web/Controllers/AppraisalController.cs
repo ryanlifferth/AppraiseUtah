@@ -78,6 +78,8 @@ namespace AppraiseUtah.Web.Controllers
                 ClearOrderClientData(ref appraisalViewModel);
             }
 
+            appraisalViewModel.Appraisal.OrderDate = DateTime.UtcNow;
+
             var appraisalId = _appraisalServiceModel.Save_Appraisal(appraisalViewModel);
             appraisalViewModel.Appraisal.Id = appraisalId;
 

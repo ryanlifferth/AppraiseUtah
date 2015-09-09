@@ -6,6 +6,7 @@ using AppraiseUtah.Client.ViewModels;
 using System.Net.Mail;
 using AppraiseUtah.Client.Models;
 using System.Configuration;
+using AppraiseUtah.Client.Extensions;
 
 namespace AppraiseUtah.Client.Utilities
 {
@@ -102,6 +103,7 @@ namespace AppraiseUtah.Client.Utilities
             {
                 body.Append(@"<h2 style=""line-height:1.1;font-size:32px;margin-top:21px;margin-bottom:5px;color:#6abe59;font-weight:normal"">Thank you for your order at <em>AppraiseUtah.com</em></h2>");
                 body.Append(@"<h4 style=""line-height:1.1;font-size:24px;margin-top:0;margin-bottom:5px;color:#6abe59;font-weight:normal"">Your appraisal order number is:  <strong style=""margin:0 5px"">" + appraisal.Appraisal.Id + "</strong></h4>");
+                body.Append(@"<h4 style=""line-height:1.1;font-size:18px;margin-top:0;margin-bottom:5px;color:#6abe59;font-weight:normal"">Ordered on <strong style=""margin:0 5px"">" + appraisal.Appraisal.OrderDate.ToFormattedLocal() + "</strong></h4>");
                 //body.Append(@"<h6 style=""lineheight:1.0;font-size:16px;margin-top:0;margin-bottom:10.5px;color:#333;font-weight:normal"">Do not reply to this e-mail</h6>");
             }
             else

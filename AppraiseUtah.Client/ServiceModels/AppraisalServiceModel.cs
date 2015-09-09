@@ -161,7 +161,7 @@ namespace AppraiseUtah.Client.ServiceModels
                     CreateParameter("contactForAccess", SqlDbType.Bit, appraisalViewModel.Appraisal.ContactForAccess),
                     CreateParameter("legalDescription", SqlDbType.VarChar, appraisalViewModel.Appraisal.LegalDescription),
                     CreateParameter("comments", SqlDbType.NText, appraisalViewModel.Appraisal.Comments),
-                    CreateParameter("orderDate", SqlDbType.DateTime, DateTime.UtcNow),
+                    CreateParameter("orderDate", SqlDbType.DateTime, appraisalViewModel.Appraisal.OrderDate),
                     newAppraisalIdParam );
 
             var appraisalId = (int)newAppraisalIdParam.Value;

@@ -3,7 +3,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using AppraiseUtah.Web.Common;
 using System.Web.Optimization;
-
+using System.Data.Entity;
+using AppraiseUtah.Client.Models;
 
 namespace AppraiseUtah.Web
 {
@@ -22,6 +23,9 @@ namespace AppraiseUtah.Web
             ViewEngines.Engines.Add(new MyRazorViewEngine());
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Allows changes to the DB model......need more info on this
+            Database.SetInitializer<AppraisalContext>(null);
         }
     }
 }

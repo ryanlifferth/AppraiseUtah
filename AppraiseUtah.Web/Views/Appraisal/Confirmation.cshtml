@@ -1,5 +1,6 @@
 ﻿@using AppraiseUtah.Client.ViewModels;
 @using AppraiseUtah.Client.Utilities;
+@using AppraiseUtah.Client.Extensions;
 @model AppraisalViewModel
 @{
     ViewBag.Title = "Confirmation";
@@ -27,6 +28,7 @@
 
 <h2 class="green-header">Thank you for your order</h2>
 <h4 class="green-header">Your appraisal order number is:  <strong>@Model.Appraisal.Id</strong></h4>
+<h4 class="green-header">Ordered on <strong>@Model.Appraisal.OrderDate.ToFormattedLocal()</strong></h4>
 @{ if (!string.IsNullOrEmpty(Model.Appraisal.ClientPerson.Email))
  {
     <div class="note">You will receive an e-mail confirmation shortly at <em>@Model.Appraisal.ClientPerson.Email</em>.</div>

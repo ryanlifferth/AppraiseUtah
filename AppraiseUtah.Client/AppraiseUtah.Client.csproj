@@ -63,6 +63,7 @@
     <Compile Include="Common\Constants\AppraisalType.cs" />
     <Compile Include="Common\Constants\PersonType.cs" />
     <Compile Include="Common\Constants\PropertyType.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Models\Rate.cs" />
     <Compile Include="Models\Rates.cs" />
     <Compile Include="ServiceModels\AppraisalPurposeServiceModel.cs" />
@@ -93,6 +94,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
