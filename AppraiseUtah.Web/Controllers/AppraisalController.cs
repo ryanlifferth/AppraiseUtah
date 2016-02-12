@@ -7,6 +7,7 @@ using AppraiseUtah.Client.Models;
 using AppraiseUtah.Client.ServiceModels;
 using AppraiseUtah.Client.Utilities;
 using AppraiseUtah.Client.ViewModels;
+using reCAPTCHA.MVC;
 
 namespace AppraiseUtah.Web.Controllers
 {
@@ -52,42 +53,51 @@ namespace AppraiseUtah.Web.Controllers
         }*/
 
         [HttpPost]
-        public ActionResult Index(AppraisalViewModel appraisalViewModel)
+        [CaptchaValidator]
+        public ActionResult Index(AppraisalViewModel appraisalViewModel, bool captchaValid)
         {
-            /*var appraisalModel = new Models.Appraisal();
-            appraisalViewModel.Appraisal.ClientPerson = new Models.Person { FirstName = "Ryan", LastName = "Test", CompanyName = "Ryan Company", Email = "ryan@test.com", Phone = "8015556565" };
-            appraisalViewModel.Appraisal.OccupantPerson = new Models.Person { FirstName = "Sam", LastName = "Occupant" };
-            appraisalViewModel.Appraisal.PropertyAddress = new Models.Address { Address1 = "123 Somewhere", City = "SLC", PostalCode = "12345", StateCode = "UT" };
-            appraisalViewModel.Appraisal.AppraiserId = 3;
-            appraisalViewModel.Appraisal.PropertyTypeCode = "SFR";
-            appraisalViewModel.Appraisal.AppraisalTypeCode = "FULL";
-            appraisalViewModel.Appraisal.AppraisalPurposeCode = "SC";
-            appraisalViewModel.Appraisal.Comments = "Web test";
-            appraisalViewModel.Appraisal.ClientAddress.Address1 = "123 ClientAddress Ave";
-            appraisalViewModel.Appraisal.ClientAddress.City = "SLC";
-            appraisalViewModel.Appraisal.ClientAddress.PostalCode = "12345";
-            appraisalViewModel.Appraisal.ClientAddress.StateCode = "UT";*/
 
-
-            appraisalViewModel.Appraisal.ClientPerson.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.ClientPerson.Phone);
-            appraisalViewModel.Appraisal.OccupantPerson.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.OccupantPerson.Phone);
-            appraisalViewModel.Appraisal.Client2Person.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.Client2Person.Phone);
-
-            if (Request["AreYouClient"] == "Yes")
+            if (ModelState.IsValid)
             {
-                ClearOrderClientData(ref appraisalViewModel);
+                /*var appraisalModel = new Models.Appraisal();
+                appraisalViewModel.Appraisal.ClientPerson = new Models.Person { FirstName = "Ryan", LastName = "Test", CompanyName = "Ryan Company", Email = "ryan@test.com", Phone = "8015556565" };
+                appraisalViewModel.Appraisal.OccupantPerson = new Models.Person { FirstName = "Sam", LastName = "Occupant" };
+                appraisalViewModel.Appraisal.PropertyAddress = new Models.Address { Address1 = "123 Somewhere", City = "SLC", PostalCode = "12345", StateCode = "UT" };
+                appraisalViewModel.Appraisal.AppraiserId = 3;
+                appraisalViewModel.Appraisal.PropertyTypeCode = "SFR";
+                appraisalViewModel.Appraisal.AppraisalTypeCode = "FULL";
+                appraisalViewModel.Appraisal.AppraisalPurposeCode = "SC";
+                appraisalViewModel.Appraisal.Comments = "Web test";
+                appraisalViewModel.Appraisal.ClientAddress.Address1 = "123 ClientAddress Ave";
+                appraisalViewModel.Appraisal.ClientAddress.City = "SLC";
+                appraisalViewModel.Appraisal.ClientAddress.PostalCode = "12345";
+                appraisalViewModel.Appraisal.ClientAddress.StateCode = "UT";*/
+
+
+                appraisalViewModel.Appraisal.ClientPerson.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.ClientPerson.Phone);
+                appraisalViewModel.Appraisal.OccupantPerson.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.OccupantPerson.Phone);
+                appraisalViewModel.Appraisal.Client2Person.Phone = AppraiseUtah.Client.Utilities.ScrubData.RemoveNonNumeric(appraisalViewModel.Appraisal.Client2Person.Phone);
+
+                if (Request["AreYouClient"] == "Yes")
+                {
+                    ClearOrderClientData(ref appraisalViewModel);
+                }
+
+                appraisalViewModel.Appraisal.OrderDate = DateTime.UtcNow;
+
+                var appraisalId = _appraisalServiceModel.Save_Appraisal(appraisalViewModel);
+                appraisalViewModel.Appraisal.Id = appraisalId;
+
+                // Send the confirmation email
+
+                MailUtility.SendConfirmationEmail(appraisalViewModel);
+
+                return RedirectToAction("Confirmation", new { id = appraisalId });
             }
-
-            appraisalViewModel.Appraisal.OrderDate = DateTime.UtcNow;
-
-            var appraisalId = _appraisalServiceModel.Save_Appraisal(appraisalViewModel);
-            appraisalViewModel.Appraisal.Id = appraisalId;
-
-            // Send the confirmation email
-
-            MailUtility.SendConfirmationEmail(appraisalViewModel);
-
-            return RedirectToAction("Confirmation", new { id = appraisalId });
+            else
+            {
+                return View(appraisalViewModel);
+            }
         }
 
         #endregion Index

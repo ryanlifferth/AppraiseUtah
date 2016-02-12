@@ -137,6 +137,29 @@ select.blank-first-child option {
     color: #6abe59;
 }
 
+
+/* reCAPTCHA styling */
+.captia-container {
+
+}
+
+.captia-container .g-recaptcha > div > div {
+    float: right;
+}
+
+.field-validation-error {
+    color: red;
+    float: right;
+    margin-right: 10px;
+    margin-top: 25px;
+}
+
+.captcha-clearfix {
+    margin-bottom: 10px;
+}
+
+
+
 #ConfirmationInfo {
     border: none;
     border-bottom: 1px dashed #a3a3a3;
