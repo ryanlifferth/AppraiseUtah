@@ -154,6 +154,11 @@ select.blank-first-child option {
     margin-top: 25px;
 }
 
+.field-validation-error.header-captcha-error {
+    float: none;
+    margin: 0;
+}
+
 .captcha-clearfix {
     margin-bottom: 10px;
 }

@@ -96,6 +96,10 @@ namespace AppraiseUtah.Web.Controllers
             }
             else
             {
+                if (!captchaValid)
+                {
+                    ViewBag.Captcha = false;
+                }
                 return View(appraisalViewModel);
             }
         }

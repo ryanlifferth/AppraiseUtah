@@ -6,6 +6,7 @@
     ViewBag.Title = "Order An Appraisal";
     Layout = "~/Views/Shared/_Layout.cshtml";
     //var stateList = ViewData["StateList"];
+
 }
 
 <h2>Order an Appraisal</h2>
@@ -15,19 +16,24 @@
     Html.AntiForgeryToken();
 
     @*<h4>1.  Select an appraiser/appraisal company</h4>
-    <div class="well well-sm form-group">
-        <div class="group-label">
-            @Html.LabelFor(m => m.Appraisal.AppraiserId)
-        </div>
-        <div class="group-input">
-            @{ Html.RenderAction("_AppraiserDropdown", "Appraiser"); }
-            @Html.ValidationMessageFor(m => m.Appraisal.AppraiserId)
-            @Html.HiddenFor(m => m.Appraisal.AppraiserId, new { data_item = "AppraiserId", @class = "validate" })
-        </div>
-    </div>*@
-    
+        <div class="well well-sm form-group">
+            <div class="group-label">
+                @Html.LabelFor(m => m.Appraisal.AppraiserId)
+            </div>
+            <div class="group-input">
+                @{ Html.RenderAction("_AppraiserDropdown", "Appraiser"); }
+                @Html.ValidationMessageFor(m => m.Appraisal.AppraiserId)
+                @Html.HiddenFor(m => m.Appraisal.AppraiserId, new { data_item = "AppraiserId", @class = "validate" })
+            </div>
+        </div>*@
+
     @Html.HiddenFor(m => m.Appraisal.AppraiserId, new { data_item = "AppraiserId", Value = "1" })
-    
+
+    if (ViewBag.Captcha == false)
+    {
+    @Html.ValidationMessage("ReCaptcha", "Please click the reCAPTCHA checkbox at the bottom of the page.", new { @class = "header-captcha-error" })
+    }
+
 
     <h4>1.  Tell us about yourself</h4>
     <div class="well well-sm">
